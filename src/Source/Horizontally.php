@@ -12,7 +12,7 @@ class Horizontally implements Sort
         $diffArray = $diff->Sorting($inputArray, $sizeOfArray);
         $outputArray = array();
         $count = 0;
-//        echo "Horizontally:<br>";
+        echo "Horizontally:<br>";
         for ($firstIndex=0; $firstIndex<$sizeOfArray; $firstIndex++)
         {
             for ($secondIndex=0; $secondIndex<$sizeOfArray; $secondIndex++)

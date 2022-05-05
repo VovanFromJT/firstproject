@@ -12,7 +12,7 @@ class Vertically implements Sort
         $diffArray = $diff->Sorting($inputArray, $sizeOfArray);
         $outputArray = array();
         $count = 0;
-//        echo "Vertically:<br>";
+        echo "Vertically:<br>";
         for ($firstIndex=0; $firstIndex<$sizeOfArray; $firstIndex++)
         {
             for ($secondIndex=0; $secondIndex<$sizeOfArray; $secondIndex++)
