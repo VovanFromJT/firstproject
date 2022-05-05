@@ -13,7 +13,7 @@ class Snake implements Sort
         $outputArray = array();
         $flag = "right";
         $firstMin = $count = 0;
-
+        //echo "Snake:<br>";
         while ($count<$sizeOfArray*$sizeOfArray)
         {
             switch ($flag)

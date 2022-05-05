@@ -14,7 +14,7 @@ class Snail implements Sort
         $flag = "right";
         $firstMin = $secondMin = $count = 0;
         $firstMax = $secondMax = $sizeOfArray-1;
-
+        //echo "Snail:<br>";
         while ($count<$sizeOfArray*$sizeOfArray)
         {
             switch ($flag)
