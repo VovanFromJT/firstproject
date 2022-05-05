@@ -1,0 +1,19 @@
+{
+    "name": "vova/mrpocket",
+    "description": "First project",
+    "type": "project",
+    "license": "no",
+    "autoload": {
+        "psr-4": {
+            "Source\\": "src/",
+            "Interfaces\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "MrPocket",
+            "email": "mr.pocket69@gmail.com"
+        }
+    ],
+    "require": {}
+}
