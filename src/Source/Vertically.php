@@ -13,11 +13,11 @@ class Vertically implements Sort
         $outputArray = array();
         $count = 0;
 
-        for ($firstIndex=0; $firstIndex<$sizeOfArray; $firstIndex++)
+        for ($secondIndex=0; $secondIndex<$sizeOfArray; $secondIndex++)
         {
-            for ($secondIndex=0; $secondIndex<$sizeOfArray; $secondIndex++)
+            for ($firstIndex=0; $firstIndex<$sizeOfArray; $firstIndex++)
             {
-                $outputArray[$secondIndex][$firstIndex] = $diffArray[$count];
+                $outputArray[$firstIndex][$secondIndex] = $diffArray[$count];
                 $count++;
             }
         }

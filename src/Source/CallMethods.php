@@ -14,6 +14,8 @@ class CallMethods
         $vertical->Sorting($inputArray,$sizeOfArray);
         $snake = new Snake;
         $snake->Sorting($inputArray,$sizeOfArray);
+        $diagonal = new Diagonal;
+        $diagonal->Sorting($inputArray,$sizeOfArray);
         $snail = new Snail();
         $snail->Sorting($inputArray, $sizeOfArray);
     }

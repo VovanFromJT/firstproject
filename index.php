@@ -6,10 +6,13 @@ use Source\Source\CallMethods;
 ?>
 
 <html lang="en">
+<head>
+    <title>Sorting</title>
+</head>
 <body>
 <form method="post">
 Size of Array:  <input type="text" name="sizeOfArray">
-    <input type="submit">
+    <input type="submit" value="Confirm">
     <?php if (isset($_POST['sizeOfArray']))
     {
         echo "<br>";

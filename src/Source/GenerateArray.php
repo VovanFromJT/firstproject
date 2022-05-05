@@ -6,11 +6,11 @@ class GenerateArray
 {
 	public function Generate(int $sizeOfArray): array
     {
-        for ($i=0; $i<$sizeOfArray; $i++)
+        for ($firstIndex=0; $firstIndex<$sizeOfArray; $firstIndex++)
         {
-            for ($j=0; $j<$sizeOfArray; $j++)
+            for ($secondIndex=0; $secondIndex<$sizeOfArray; $secondIndex++)
             {
-                $inputArray[$i][$j] = rand(0, $sizeOfArray*$sizeOfArray);
+                $inputArray[$firstIndex][$secondIndex] = rand(0, $sizeOfArray*$sizeOfArray);
             }
         }
         if (!empty($inputArray)) {

@@ -30,18 +30,6 @@ class ComposerStaticInitbdaa42cfeb11fff9a0e70f4b69ba04a9
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'Source\\Interfaces\\Output' => __DIR__ . '/../..' . '/src/Interfaces/Output.php',
-        'Source\\Interfaces\\Sort' => __DIR__ . '/../..' . '/src/Interfaces/Sort.php',
-        'Source\\Source\\CallMethods' => __DIR__ . '/../..' . '/src/Source/CallMethods.php',
-        'Source\\Source\\Diagonal' => __DIR__ . '/../..' . '/src/Source/Diagonal.php',
-        'Source\\Source\\DiffArray' => __DIR__ . '/../..' . '/src/Source/DiffArray.php',
-        'Source\\Source\\GenerateArray' => __DIR__ . '/../..' . '/src/Source/GenerateArray.php',
-        'Source\\Source\\Horizontally' => __DIR__ . '/../..' . '/src/Source/Horizontally.php',
-        'Source\\Source\\OutputInTxt' => __DIR__ . '/../..' . '/src/Source/OutputInTxt.php',
-        'Source\\Source\\OutputOnScreen' => __DIR__ . '/../..' . '/src/Source/OutputOnScreen.php',
-        'Source\\Source\\Snail' => __DIR__ . '/../..' . '/src/Source/Snail.php',
-        'Source\\Source\\Snake' => __DIR__ . '/../..' . '/src/Source/Snake.php',
-        'Source\\Source\\Vertically' => __DIR__ . '/../..' . '/src/Source/Vertically.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
