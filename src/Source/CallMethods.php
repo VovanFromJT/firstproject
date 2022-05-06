@@ -7,16 +7,17 @@ class CallMethods
     public function __construct($sizeOfArray)
     {
         $gen = new GenerateArray;
-        $inputArray = $gen->Generate($sizeOfArray);
         $horizontal = new Horizontally;
-        $horizontal->Sorting($inputArray,$sizeOfArray);
         $vertical = new Vertically;
-        $vertical->Sorting($inputArray,$sizeOfArray);
         $snake = new Snake;
-        $snake->Sorting($inputArray,$sizeOfArray);
         $diagonal = new Diagonal;
+        $snail = new Snail;
+
+        $inputArray = $gen->Generate($sizeOfArray);
+        $horizontal->Sorting($inputArray,$sizeOfArray);
+        $vertical->Sorting($inputArray,$sizeOfArray);
+        $snake->Sorting($inputArray,$sizeOfArray);
         $diagonal->Sorting($inputArray,$sizeOfArray);
-        $snail = new Snail();
         $snail->Sorting($inputArray, $sizeOfArray);
     }
 }

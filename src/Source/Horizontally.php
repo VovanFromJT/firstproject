@@ -16,7 +16,7 @@ class Horizontally implements Sort, CallOthers
     public function CallDiffArray()
     {
         $diff = new DiffArray;
-        $this->diffArray = $diff->Sorting($this->inputArray, $this->sizeOfArray);
+        $this->diffArray = $diff->SortDiff($this->inputArray);
     }
 
     public function CallOutput()

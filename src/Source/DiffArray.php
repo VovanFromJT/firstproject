@@ -1,11 +1,10 @@
 <?php
 
 namespace Source\Source;
-use Source\Interfaces\Sort;
 
-class DiffArray implements Sort
+class DiffArray
 {
-    public function Sorting(array $inputArray, int $sizeOfArray)
+    public function SortDiff(array $inputArray)
     {
         $diffArray = call_user_func_array('array_merge', $inputArray);
         sort($diffArray);
