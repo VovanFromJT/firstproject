@@ -6,7 +6,7 @@ use Source\Interfaces\Sort;
 
 class Snail implements Sort, CallOthers
 {
-    private string $name = "Horizontal";
+    private string $name = "Snail";
     private int $sizeOfArray;
     public array $diffArray;
     public array $inputArray;

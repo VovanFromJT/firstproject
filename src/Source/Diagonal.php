@@ -6,7 +6,7 @@ use Source\Interfaces\Sort;
 
 class Diagonal implements Sort, CallOthers
 {
-    private string $name = "Horizontal";
+    private string $name = "Diagonal";
     private int $sizeOfArray;
     public array $diffArray;
     public array $inputArray;
