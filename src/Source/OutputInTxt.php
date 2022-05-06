@@ -5,7 +5,7 @@ use Source\Interfaces\Output;
 
 class OutputInTxt implements Output
 {
-    public function OutputArray(array $outputArray, int $sizeOfArray, string $name)
+    public function outputArray(array $outputArray, int $sizeOfArray, string $name)
     {
         $file = fopen("files/outputArray${name}.txt", "w");
         for ($firstIndex = 0; $firstIndex < $sizeOfArray; $firstIndex++)

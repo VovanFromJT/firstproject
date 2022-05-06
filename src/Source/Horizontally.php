@@ -1,46 +1,28 @@
 <?php
 
 namespace Source\Source;
-use Source\Interfaces\CallOthers;
+
 use Source\Interfaces\Sort;
 
-
-class Horizontally implements Sort, CallOthers
+class Horizontally extends ParentAlgoritm implements Sort
 {
-    private string $name = "Horizontal";
-    private int $sizeOfArray;
-    public array $diffArray;
-    public array $inputArray;
-    public array $outputArray;
-
-    public function CallDiffArray()
+    function __construct(array $inputArray, int $sizeOfArray)
     {
-        $diff = new DiffArray;
-        $this->diffArray = $diff->SortDiff($this->inputArray);
+        parent::__construct(self::HORIZONTAL_ALGORITM, $inputArray, $sizeOfArray);
     }
 
-    public function CallOutput()
+    public function sorting()
     {
-        $txt = new OutputInTxt;
-        $screen = new OutputOnScreen;
-        $txt->OutputArray($this->outputArray, $this->sizeOfArray, $this->name);
-        $screen->OutputArray($this->outputArray, $this->sizeOfArray, $this->name);
-    }
-
-    public function Sorting(array $inputArray, int $sizeOfArray)
-    {
-        $this->inputArray = $inputArray;
-        $this->sizeOfArray = $sizeOfArray;
         $count = 0;
-        $this->CallDiffArray();
-        for ($firstIndex=0; $firstIndex<$sizeOfArray; $firstIndex++)
+        $this->callDiffArray();
+        for ($firstIndex=0; $firstIndex<$this->sizeOfArray; $firstIndex++)
         {
-            for ($secondIndex=0; $secondIndex<$sizeOfArray; $secondIndex++)
+            for ($secondIndex=0; $secondIndex<$this->sizeOfArray; $secondIndex++)
             {
                 $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
                 $count++;
             }
         }
-        $this->CallOutput();
+        $this->callOutput();
     }
 }

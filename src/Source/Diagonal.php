@@ -1,39 +1,24 @@
 <?php
 
 namespace Source\Source;
-use Source\Interfaces\CallOthers;
+
 use Source\Interfaces\Sort;
 
-class Diagonal implements Sort, CallOthers
+class Diagonal extends ParentAlgoritm implements Sort
 {
-    private string $name = "Diagonal";
-    private int $sizeOfArray;
-    public array $diffArray;
-    public array $inputArray;
-    public array $outputArray;
-
-    public function CallDiffArray()
+    function __construct(array $inputArray, int $sizeOfArray)
     {
-        $diff = new DiffArray;
-        $this->diffArray = $diff->SortDiff($this->inputArray);
+        parent::__construct(self::DIAGONAL_ALGORITM, $inputArray, $sizeOfArray);
     }
 
-    public function CallOutput()
+    public function sorting()
     {
-        $txt = new OutputInTxt;
-        $screen = new OutputOnScreen;
-        $txt->OutputArray($this->outputArray, $this->sizeOfArray, $this->name);
-        $screen->OutputArray($this->outputArray, $this->sizeOfArray, $this->name);
-    }
-    public function Sorting(array $inputArray, int $sizeOfArray)
-    {
-        $this->inputArray = $inputArray;
-        $this->sizeOfArray = $sizeOfArray;
-        $this->CallDiffArray();
+
+        $this->callDiffArray();
         $flag = "right-up";
         $firstMin = $secondMin = $firstPosition = $secondPosition = $count = 0;
 
-        while ($count<$sizeOfArray*$sizeOfArray)
+        while ($count< $this->sizeOfArray * $this->sizeOfArray)
         {
             switch ($flag)
             {
@@ -43,11 +28,11 @@ class Diagonal implements Sort, CallOthers
                     $secondIndex = $secondMin;
                     $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
                     $count++;
-                    if ($firstIndex == 0 && $secondIndex != $sizeOfArray-1)
+                    if ($firstIndex == 0 && $secondIndex != $this->sizeOfArray-1)
                     {
                         $flag = "down";
                         break;
-                    }elseif ($secondIndex == $sizeOfArray-1)
+                    }elseif ($secondIndex == $this->sizeOfArray-1)
                     {
                         $flag = "right";
                         break;
@@ -76,6 +61,6 @@ class Diagonal implements Sort, CallOthers
                 }
             }
         }
-        $this->CallOutput();
+        $this->callOutput();
     }
 }

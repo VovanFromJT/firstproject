@@ -4,5 +4,5 @@ namespace Source\Interfaces;
 
 interface Output
 {
-    public function OutputArray(array $outputArray, int $sizeOfArray, string $name);
+    public function outputArray(array $outputArray, int $sizeOfArray, string $name);
 }

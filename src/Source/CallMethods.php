@@ -4,20 +4,33 @@ namespace Source\Source;
 
 class CallMethods
 {
-    public function __construct($sizeOfArray)
+    public int $sizeOfArray;
+
+    public function __construct(int $sizeOfArray)
+    {
+        $this->sizeOfArray = $sizeOfArray;
+    }
+
+    public function callGenerate()
     {
         $gen = new GenerateArray;
-        $horizontal = new Horizontally;
-        $vertical = new Vertically;
-        $snake = new Snake;
-        $diagonal = new Diagonal;
-        $snail = new Snail;
-
-        $inputArray = $gen->Generate($sizeOfArray);
-        $horizontal->Sorting($inputArray,$sizeOfArray);
-        $vertical->Sorting($inputArray,$sizeOfArray);
-        $snake->Sorting($inputArray,$sizeOfArray);
-        $diagonal->Sorting($inputArray,$sizeOfArray);
-        $snail->Sorting($inputArray, $sizeOfArray);
+        $inputArray = $gen->generate($this->sizeOfArray);
+        $this->callRun($inputArray);
     }
+
+    public function callRun(array $inputArray)
+    {
+        $horizontal = new Horizontally($inputArray,$this->sizeOfArray);
+        $vertical = new Vertically($inputArray,$this->sizeOfArray);
+        $snake = new Snake($inputArray,$this->sizeOfArray);
+        $diagonal = new Diagonal($inputArray,$this->sizeOfArray);
+        $snail = new Snail($inputArray,$this->sizeOfArray);
+
+        $horizontal->sorting();
+        $vertical->sorting();
+        $snake->sorting();
+        $diagonal->sorting();
+        $snail->sorting();
+    }
+
 }

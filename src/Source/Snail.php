@@ -1,39 +1,23 @@
 <?php
 
 namespace Source\Source;
-use Source\Interfaces\CallOthers;
+
 use Source\Interfaces\Sort;
 
-class Snail implements Sort, CallOthers
+class Snail extends ParentAlgoritm implements Sort
 {
-    private string $name = "Snail";
-    private int $sizeOfArray;
-    public array $diffArray;
-    public array $inputArray;
-    public array $outputArray;
-
-    public function CallDiffArray()
+    function __construct(array $inputArray, int $sizeOfArray)
     {
-        $diff = new DiffArray;
-        $this->diffArray = $diff->SortDiff($this->inputArray);
+        parent::__construct(self::SNAIL_ALGORITM, $inputArray, $sizeOfArray);
     }
 
-    public function CallOutput()
+    public function sorting()
     {
-        $txt = new OutputInTxt;
-        $screen = new OutputOnScreen;
-        $txt->OutputArray($this->outputArray, $this->sizeOfArray, $this->name);
-        $screen->OutputArray($this->outputArray, $this->sizeOfArray, $this->name);
-    }
-    public function Sorting(array $inputArray, int $sizeOfArray)
-    {
-        $this->inputArray = $inputArray;
-        $this->sizeOfArray = $sizeOfArray;
         $flag = "right";
         $firstMin = $secondMin = $count = 0;
-        $firstMax = $secondMax = $sizeOfArray-1;
-        $this->CallDiffArray();
-        while ($count<$sizeOfArray*$sizeOfArray)
+        $firstMax = $secondMax = $this->sizeOfArray-1;
+        $this->callDiffArray();
+        while ($count<$this->sizeOfArray*$this->sizeOfArray)
         {
             switch ($flag)
             {
@@ -87,6 +71,6 @@ class Snail implements Sort, CallOthers
                     break;
             }
         }
-        $this->CallOutput();
+        $this->callOutput();
     }
 }

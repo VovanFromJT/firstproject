@@ -5,7 +5,7 @@ use Source\Interfaces\Output;
 
 class OutputOnScreen implements Output
 {
-    public function OutputArray(array $outputArray, int $sizeOfArray, string $name)
+    public function outputArray(array $outputArray, int $sizeOfArray, string $name)
     {
         echo "<br>${name}:<br>";
         echo "<p><table>";
@@ -14,7 +14,7 @@ class OutputOnScreen implements Output
             echo "<tr>";
             for ($secondIndex = 0; $secondIndex < $sizeOfArray; $secondIndex++)
             {
-                echo "<td>".$outputArray[$firstIndex][$secondIndex]."</td>";
+                echo "<td style='border: 1px solid black'>".$outputArray[$firstIndex][$secondIndex]."</td>";
             }
             echo "</tr>";
         }

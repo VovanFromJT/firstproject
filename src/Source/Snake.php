@@ -1,46 +1,29 @@
 <?php
 
 namespace Source\Source;
-use Source\Interfaces\CallOthers;
+
 use Source\Interfaces\Sort;
 
-class Snake implements Sort, CallOthers
+class Snake extends ParentAlgoritm implements Sort
 {
-    private string $name = "Snake";
-    private int $sizeOfArray;
-    public array $diffArray;
-    public array $inputArray;
-    public array $outputArray;
-
-    public function CallDiffArray()
+    function __construct(array $inputArray, int $sizeOfArray)
     {
-        $diff = new DiffArray;
-        $this->diffArray = $diff->SortDiff($this->inputArray);
+        parent::__construct(self::SNAKE_ALGORITM, $inputArray, $sizeOfArray);
     }
 
-    public function CallOutput()
+    public function sorting()
     {
-        $txt = new OutputInTxt;
-        $screen = new OutputOnScreen;
-        $txt->OutputArray($this->outputArray, $this->sizeOfArray, $this->name);
-        $screen->OutputArray($this->outputArray, $this->sizeOfArray, $this->name);
-    }
-
-    public function Sorting(array $inputArray, int $sizeOfArray)
-    {
-        $this->inputArray = $inputArray;
-        $this->sizeOfArray = $sizeOfArray;
         $flag = "right";
         $firstMin = $count = 0;
-        $this->CallDiffArray();
-        while ($count<$sizeOfArray*$sizeOfArray)
+        $this->callDiffArray();
+        while ($count<$this->sizeOfArray*$this->sizeOfArray)
         {
             switch ($flag)
             {
                 case "right":
                 {
                     $firstIndex = $firstMin;
-                    for ($secondIndex=0; $secondIndex<$sizeOfArray; $secondIndex++)
+                    for ($secondIndex=0; $secondIndex<$this->sizeOfArray; $secondIndex++)
                     {
                         $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
                         $count++;
@@ -52,7 +35,7 @@ class Snake implements Sort, CallOthers
                 case "left":
                 {
                     $firstIndex = $firstMin;
-                    for ($secondIndex=$sizeOfArray-1; $secondIndex>=0; $secondIndex--)
+                    for ($secondIndex=$this->sizeOfArray-1; $secondIndex>=0; $secondIndex--)
                     {
                         $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
                         $count++;
@@ -63,6 +46,6 @@ class Snake implements Sort, CallOthers
                 }
             }
         }
-        $this->CallOutput();
+        $this->callOutput();
     }
 }
