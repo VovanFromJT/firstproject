@@ -7,16 +7,18 @@ class OutputOnScreen implements Output
 {
     public function OutputArray(array $outputArray, int $sizeOfArray, string $name)
     {
-        echo "${name}:<br>";
-        for ($i = 0; $i < $sizeOfArray; $i++)
+        echo "<br>${name}:<br>";
+        echo "<p><table>";
+        for ($firstIndex = 0; $firstIndex < $sizeOfArray; $firstIndex++)
         {
-            for ($j = 0; $j < $sizeOfArray; $j++)
+            echo "<tr>";
+            for ($secondIndex = 0; $secondIndex < $sizeOfArray; $secondIndex++)
             {
-                echo $outputArray[$i][$j]."\t\t";
+                echo "<td>".$outputArray[$firstIndex][$secondIndex]."</td>";
             }
-            echo "<br>";
+            echo "</tr>";
         }
-        echo "<br>";
+        echo "</table></p>";
 
     }
 }
