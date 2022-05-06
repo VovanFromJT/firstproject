@@ -1,20 +1,38 @@
 <?php
 
 namespace Source\Source;
+use Source\Interfaces\CallOthers;
 use Source\Interfaces\Sort;
 
-class Snail implements Sort
+class Snail implements Sort, CallOthers
 {
+    private string $name = "Horizontal";
+    private int $sizeOfArray;
+    public array $diffArray;
+    public array $inputArray;
+    public array $outputArray;
+
+    public function CallDiffArray()
+    {
+        $diff = new DiffArray;
+        $this->diffArray = $diff->Sorting($this->inputArray, $this->sizeOfArray);
+    }
+
+    public function CallOutput()
+    {
+        $txt = new OutputInTxt;
+        $screen = new OutputOnScreen;
+        $txt->OutputArray($this->outputArray, $this->sizeOfArray, $this->name);
+        $screen->OutputArray($this->outputArray, $this->sizeOfArray, $this->name);
+    }
     public function Sorting(array $inputArray, int $sizeOfArray)
     {
-        $name = "Snail";
-        $diff = new DiffArray;
-        $diffArray = $diff->Sorting($inputArray, $sizeOfArray);
-        $outputArray = array();
+        $this->inputArray = $inputArray;
+        $this->sizeOfArray = $sizeOfArray;
         $flag = "right";
         $firstMin = $secondMin = $count = 0;
         $firstMax = $secondMax = $sizeOfArray-1;
-
+        $this->CallDiffArray();
         while ($count<$sizeOfArray*$sizeOfArray)
         {
             switch ($flag)
@@ -23,8 +41,8 @@ class Snail implements Sort
                     $firstIndex = $firstMin;
                     for ($secondIndex=$secondMin; $secondIndex<=$secondMax; $secondIndex++)
                     {
-                        if (empty($outputArray[$firstIndex][$secondIndex])) {
-                            $outputArray[$firstIndex][$secondIndex] = $diffArray[$count];
+                        if (empty($this->outputArray[$firstIndex][$secondIndex])) {
+                            $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
                             $count++;
                         }
                     }
@@ -35,8 +53,8 @@ class Snail implements Sort
                     $secondIndex = $secondMax;
                     for ($firstIndex=$firstMin; $firstIndex<=$firstMax; $firstIndex++)
                     {
-                        if (empty($outputArray[$firstIndex][$secondIndex])) {
-                            $outputArray[$firstIndex][$secondIndex] = $diffArray[$count];
+                        if (empty($this->outputArray[$firstIndex][$secondIndex])) {
+                            $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
                             $count++;
                         }
                     }
@@ -47,8 +65,8 @@ class Snail implements Sort
                     $firstIndex = $firstMax;
                     for ($secondIndex=$secondMax; $secondIndex>=$secondMin; $secondIndex--)
                     {
-                        if (empty($outputArray[$firstIndex][$secondIndex])) {
-                            $outputArray[$firstIndex][$secondIndex] = $diffArray[$count];
+                        if (empty($this->outputArray[$firstIndex][$secondIndex])) {
+                            $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
                             $count++;
                         }
                     }
@@ -59,8 +77,8 @@ class Snail implements Sort
                     $secondIndex = $secondMin;
                     for ($firstIndex=$firstMax; $firstIndex>=$firstMin; $firstIndex--)
                     {
-                        if (empty($outputArray[$firstIndex][$secondIndex])) {
-                            $outputArray[$firstIndex][$secondIndex] = $diffArray[$count];
+                        if (empty($this->outputArray[$firstIndex][$secondIndex])) {
+                            $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
                             $count++;
                         }
                     }
@@ -69,9 +87,6 @@ class Snail implements Sort
                     break;
             }
         }
-        $txt = new OutputInTxt;
-        $screen = new OutputOnScreen;
-        $txt->OutputArray($outputArray, $sizeOfArray, $name);
-        $screen->OutputArray($outputArray, $sizeOfArray, $name);
+        $this->CallOutput();
     }
 }

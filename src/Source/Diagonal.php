@@ -1,16 +1,35 @@
 <?php
 
 namespace Source\Source;
+use Source\Interfaces\CallOthers;
 use Source\Interfaces\Sort;
 
-class Diagonal implements Sort
+class Diagonal implements Sort, CallOthers
 {
+    private string $name = "Horizontal";
+    private int $sizeOfArray;
+    public array $diffArray;
+    public array $inputArray;
+    public array $outputArray;
+
+    public function CallDiffArray()
+    {
+        $diff = new DiffArray;
+        $this->diffArray = $diff->Sorting($this->inputArray, $this->sizeOfArray);
+    }
+
+    public function CallOutput()
+    {
+        $txt = new OutputInTxt;
+        $screen = new OutputOnScreen;
+        $txt->OutputArray($this->outputArray, $this->sizeOfArray, $this->name);
+        $screen->OutputArray($this->outputArray, $this->sizeOfArray, $this->name);
+    }
     public function Sorting(array $inputArray, int $sizeOfArray)
     {
-        $name = "Diagonal";
-        $diff = new DiffArray;
-        $diffArray = $diff->Sorting($inputArray, $sizeOfArray);
-        $outputArray = array();
+        $this->inputArray = $inputArray;
+        $this->sizeOfArray = $sizeOfArray;
+        $this->CallDiffArray();
         $flag = "right-up";
         $firstMin = $secondMin = $firstPosition = $secondPosition = $count = 0;
 
@@ -22,7 +41,7 @@ class Diagonal implements Sort
                 {
                     $firstIndex = $firstMin;
                     $secondIndex = $secondMin;
-                    $outputArray[$firstIndex][$secondIndex] = $diffArray[$count];
+                    $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
                     $count++;
                     if ($firstIndex == 0 && $secondIndex != $sizeOfArray-1)
                     {
@@ -57,9 +76,6 @@ class Diagonal implements Sort
                 }
             }
         }
-        $txt = new OutputInTxt;
-        $screen = new OutputOnScreen;
-        $txt->OutputArray($outputArray, $sizeOfArray, $name);
-        $screen->OutputArray($outputArray, $sizeOfArray, $name);
+        $this->CallOutput();
     }
 }
