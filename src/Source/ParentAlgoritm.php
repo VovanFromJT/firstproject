@@ -6,17 +6,17 @@ use Source\Interfaces\CallOthers;
 
 class ParentAlgoritm implements CallOthers
 {
-    protected string $name;
+    private string $name;
     protected int $sizeOfArray;
-    public array $diffArray;
-    public array $inputArray;
-    public array $outputArray;
+    protected array $diffArray;
+    protected array $inputArray;
+    protected array $outputArray;
 
-    public const HORIZONTAL_ALGORITM = "Horizontal";
-    public const VERTICAL_ALGORITM = "Vertical";
-    public const SNAKE_ALGORITM = "Snake";
-    public const DIAGONAL_ALGORITM = "Diagonal";
-    public const SNAIL_ALGORITM = "Snail";
+    protected const HORIZONTAL_ALGORITM = "Horizontal";
+    protected const VERTICAL_ALGORITM = "Vertical";
+    protected const SNAKE_ALGORITM = "Snake";
+    protected const DIAGONAL_ALGORITM = "Diagonal";
+    protected const SNAIL_ALGORITM = "Snail";
 
     function __construct(string $name, array $inputArray, int $sizeOfArray)
     {

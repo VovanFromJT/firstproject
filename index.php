@@ -12,18 +12,34 @@ use Source\Source\CallMethods;
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Sorting</title>
+    <h2>Sorting Arrays</h2>
 </head>
 <body>
 <style>
-    td, tr, table {
-        border: 1px solid black;
-        margin: 5px;
-        padding: 5px;
+    h2 {
+       text-align: center;
+    }
+    p {
+        font-size: 6mm;
+        text-align: center;
+    }
+    td {
+
+        font-size: 5.5mm;
+        font-family: "Arial", serif;
+        text-align: center;
+        align-content: center;
+        border: 0.2mm solid black;
+        padding: 10px;
+    }
+    table
+    {
+        margin: 10px auto;
     }
 </style>
 <form method="post">
-    <br>Size of Array:  <input type="text" name="sizeOfArray">
-    <input type="submit" value="Confirm">
+    <p><br>Size of Array(n):  <input type="number" min="2" max="100" pattern="^[ 0-9]+$" name="sizeOfArray">
+    <input type="submit" value="Confirm"></p><hr>
     <?php if (isset($_POST['sizeOfArray']))
     {
         $sizeOfArray = $_POST['sizeOfArray'];
