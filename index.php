@@ -1,7 +1,5 @@
 <?php
-
 require __DIR__ . '/vendor/autoload.php';
-
 use Source\Source\CallMethods;
 ?>
 
@@ -38,8 +36,10 @@ use Source\Source\CallMethods;
     }
 </style>
 <form method="post">
-    <p><br>Size of Array(n):  <input type="number" min="2" max="100" pattern="^[ 0-9]+$" name="sizeOfArray">
-    <input type="submit" value="Confirm"></p><hr>
+    <p><br>Size of Array(n): <label>
+            <input type="number" min="2" max="100" pattern="^[ 0-9]+$" name="sizeOfArray">
+        </label>
+        <input type="submit" value="Confirm"></p><hr>
     <?php if (isset($_POST['sizeOfArray']))
     {
         $sizeOfArray = $_POST['sizeOfArray'];

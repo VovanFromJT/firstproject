@@ -6,25 +6,30 @@ use Source\Interfaces\Sort;
 
 class Snail extends ParentAlgoritm implements Sort
 {
-    function __construct(array $inputArray, int $sizeOfArray)
-    {
-        parent::__construct(self::SNAIL_ALGORITM, $inputArray, $sizeOfArray);
+    function __construct(
+        array $inputArray,
+        int $sizeOfArray
+    ) {
+        parent::__construct(
+            self::SNAIL_ALGORITM,
+            $inputArray,
+            $sizeOfArray
+        );
     }
 
-    public function sorting()
+    public function sorting(): void
     {
         $flag = "right";
         $firstMin = $secondMin = $count = 0;
         $firstMax = $secondMax = $this->sizeOfArray-1;
+
         $this->callDiffArray();
-        while ($count<$this->sizeOfArray*$this->sizeOfArray)
-        {
-            switch ($flag)
-            {
+
+        while ($count < $this->sizeOfArray * $this->sizeOfArray) {
+            switch ($flag) {
                 case "right":
                     $firstIndex = $firstMin;
-                    for ($secondIndex=$secondMin; $secondIndex<=$secondMax; $secondIndex++)
-                    {
+                    for ($secondIndex = $secondMin; $secondIndex <= $secondMax; $secondIndex++) {
                         if (empty($this->outputArray[$firstIndex][$secondIndex])) {
                             $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
                             $count++;
@@ -35,8 +40,7 @@ class Snail extends ParentAlgoritm implements Sort
                     break;
                 case "down":
                     $secondIndex = $secondMax;
-                    for ($firstIndex=$firstMin; $firstIndex<=$firstMax; $firstIndex++)
-                    {
+                    for ($firstIndex = $firstMin; $firstIndex <= $firstMax; $firstIndex++) {
                         if (empty($this->outputArray[$firstIndex][$secondIndex])) {
                             $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
                             $count++;
@@ -47,8 +51,7 @@ class Snail extends ParentAlgoritm implements Sort
                     break;
                 case "left":
                     $firstIndex = $firstMax;
-                    for ($secondIndex=$secondMax; $secondIndex>=$secondMin; $secondIndex--)
-                    {
+                    for ($secondIndex = $secondMax; $secondIndex >= $secondMin; $secondIndex--) {
                         if (empty($this->outputArray[$firstIndex][$secondIndex])) {
                             $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
                             $count++;
@@ -59,8 +62,7 @@ class Snail extends ParentAlgoritm implements Sort
                     break;
                 case "up":
                     $secondIndex = $secondMin;
-                    for ($firstIndex=$firstMax; $firstIndex>=$firstMin; $firstIndex--)
-                    {
+                    for ($firstIndex = $firstMax; $firstIndex >= $firstMin; $firstIndex--) {
                         if (empty($this->outputArray[$firstIndex][$secondIndex])) {
                             $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
                             $count++;

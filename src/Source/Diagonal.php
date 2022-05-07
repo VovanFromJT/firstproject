@@ -6,59 +6,55 @@ use Source\Interfaces\Sort;
 
 class Diagonal extends ParentAlgoritm implements Sort
 {
-    function __construct(array $inputArray, int $sizeOfArray)
-    {
-        parent::__construct(self::DIAGONAL_ALGORITM, $inputArray, $sizeOfArray);
+    function __construct(
+        array $inputArray,
+        int $sizeOfArray
+    ) {
+        parent::__construct(
+            self::DIAGONAL_ALGORITM,
+            $inputArray,
+            $sizeOfArray
+        );
     }
 
-    public function sorting()
+    public function sorting(): void
     {
-
-        $this->callDiffArray();
         $flag = "right-up";
         $firstMin = $secondMin = $firstPosition = $secondPosition = $count = 0;
 
-        while ($count< $this->sizeOfArray * $this->sizeOfArray)
-        {
-            switch ($flag)
-            {
+        $this->callDiffArray();
+
+        while ($count < $this->sizeOfArray * $this->sizeOfArray) {
+            switch ($flag) {
                 case "right-up":
-                {
                     $firstIndex = $firstMin;
                     $secondIndex = $secondMin;
                     $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
                     $count++;
-                    if ($firstIndex == 0 && $secondIndex != $this->sizeOfArray-1)
-                    {
+                    if (
+                        $firstIndex == 0
+                        && $secondIndex != $this->sizeOfArray - 1
+                    ) {
                         $flag = "down";
-                        break;
-                    }elseif ($secondIndex == $this->sizeOfArray-1)
-                    {
+                    } elseif ($secondIndex == $this->sizeOfArray - 1) {
                         $flag = "right";
-                        break;
-                    }else
-                    {
+                    } else {
                         $firstMin--;
                         $secondMin++;
-                        break;
                     }
-                }
+                    break;
                 case "down":
-                {
                     $firstPosition++;
                     $firstMin = $firstPosition;
                     $secondMin = $secondPosition;
                     $flag = "right-up";
                     break;
-                }
                 case "right":
-                {
                     $secondPosition++;
                     $secondMin = $secondPosition;
                     $firstMin = $firstPosition;
                     $flag = "right-up";
                     break;
-                }
             }
         }
         $this->callOutput();

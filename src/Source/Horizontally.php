@@ -6,19 +6,25 @@ use Source\Interfaces\Sort;
 
 class Horizontally extends ParentAlgoritm implements Sort
 {
-    function __construct(array $inputArray, int $sizeOfArray)
-    {
-        parent::__construct(self::HORIZONTAL_ALGORITM, $inputArray, $sizeOfArray);
+    function __construct(
+        array $inputArray,
+        int $sizeOfArray
+    ) {
+        parent::__construct(
+            self::HORIZONTAL_ALGORITM,
+            $inputArray,
+            $sizeOfArray
+        );
     }
 
-    public function sorting()
+    public function sorting(): void
     {
         $count = 0;
+
         $this->callDiffArray();
-        for ($firstIndex=0; $firstIndex<$this->sizeOfArray; $firstIndex++)
-        {
-            for ($secondIndex=0; $secondIndex<$this->sizeOfArray; $secondIndex++)
-            {
+
+        for ($firstIndex = 0; $firstIndex < $this->sizeOfArray; $firstIndex++) {
+            for ($secondIndex = 0; $secondIndex < $this->sizeOfArray; $secondIndex++) {
                 $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
                 $count++;
             }

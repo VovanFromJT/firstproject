@@ -11,20 +11,34 @@ class CallMethods
         $this->sizeOfArray = $sizeOfArray;
     }
 
-    public function callGenerate()
+    public function callGenerate(): void
     {
         $gen = new GenerateArray;
         $inputArray = $gen->generate($this->sizeOfArray);
         $this->callRun($inputArray);
     }
 
-    public function callRun(array $inputArray)
-    {
-        $horizontal = new Horizontally($inputArray,$this->sizeOfArray);
-        $vertical = new Vertically($inputArray,$this->sizeOfArray);
-        $snake = new Snake($inputArray,$this->sizeOfArray);
-        $diagonal = new Diagonal($inputArray,$this->sizeOfArray);
-        $snail = new Snail($inputArray,$this->sizeOfArray);
+    public function callRun(array $inputArray): void {
+        $horizontal = new Horizontally(
+            $inputArray,
+            $this->sizeOfArray
+        );
+        $vertical = new Vertically(
+            $inputArray,
+            $this->sizeOfArray
+        );
+        $snake = new Snake(
+            $inputArray,
+            $this->sizeOfArray
+        );
+        $diagonal = new Diagonal(
+            $inputArray,
+            $this->sizeOfArray
+        );
+        $snail = new Snail(
+            $inputArray,
+            $this->sizeOfArray
+        );
 
         $horizontal->sorting();
         $vertical->sorting();

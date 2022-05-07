@@ -4,6 +4,6 @@ namespace Source\Interfaces;
 
 interface CallOthers
 {
-    public function callDiffArray();
-    public function callOutput();
+    public function callDiffArray(): void;
+    public function callOutput(): void;
 }

@@ -4,5 +4,5 @@ namespace Source\Interfaces;
 
 interface Sort
 {
-    public function sorting();
+    public function sorting(): void;
 }

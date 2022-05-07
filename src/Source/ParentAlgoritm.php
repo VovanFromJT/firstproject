@@ -18,26 +18,37 @@ class ParentAlgoritm implements CallOthers
     protected const DIAGONAL_ALGORITM = "Diagonal";
     protected const SNAIL_ALGORITM = "Snail";
 
-    function __construct(string $name, array $inputArray, int $sizeOfArray)
-    {
+    function __construct(
+        string $name,
+        array $inputArray,
+        int $sizeOfArray
+    ) {
        $this->name = $name;
        $this->sizeOfArray = $sizeOfArray;
        $this->inputArray = $inputArray;
 
     }
 
-    public function callDiffArray()
+    public function callDiffArray(): void
     {
         $diff = new DiffArray;
         $this->diffArray = $diff->sortDiff($this->inputArray);
     }
 
-    public function callOutput()
+    public function callOutput(): void
     {
         $txt = new OutputInTxt;
         $screen = new OutputOnScreen;
-        $txt->outputArray($this->outputArray, $this->sizeOfArray, $this->name);
-        $screen->outputArray($this->outputArray, $this->sizeOfArray, $this->name);
+        $txt->outputArray(
+            $this->outputArray,
+            $this->sizeOfArray,
+            $this->name
+        );
+        $screen->outputArray(
+            $this->outputArray,
+            $this->sizeOfArray,
+            $this->name
+        );
     }
 
 
