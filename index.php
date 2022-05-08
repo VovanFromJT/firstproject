@@ -1,6 +1,9 @@
 <?php
+
 require __DIR__ . '/vendor/autoload.php';
+
 use Source\EntPoint\CallMethods;
+
 ?>
 
 <html lang="en">

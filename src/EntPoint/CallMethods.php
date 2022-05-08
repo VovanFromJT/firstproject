@@ -77,32 +77,40 @@ class CallMethods
     }
 
     public function callRun(array $inputArray): void {
-        $horizontal = new Horizontally(
-            $inputArray,
-            $this->sizeOfArray
-        );
-        $vertical = new Vertically(
-            $inputArray,
-            $this->sizeOfArray
-        );
-        $snake = new Snake(
-            $inputArray,
-            $this->sizeOfArray
-        );
-        $diagonal = new Diagonal(
-            $inputArray,
-            $this->sizeOfArray
-        );
-        $snail = new Snail(
+        self::$horizontally = new Horizontally(
             $inputArray,
             $this->sizeOfArray
         );
 
-        $horizontal->sorting();
-        $vertical->sorting();
-        $snake->sorting();
-        $diagonal->sorting();
-        $snail->sorting();
+        self::$vertically = new Vertically(
+            $inputArray,
+            $this->sizeOfArray
+        );
+
+        self::$snake = new Snake(
+            $inputArray,
+            $this->sizeOfArray
+        );
+
+        self::$diagonal = new Diagonal(
+            $inputArray,
+            $this->sizeOfArray
+        );
+
+        self::$snail = new Snail(
+            $inputArray,
+            $this->sizeOfArray
+        );
+
+        self::$horizontally->sorting();
+
+        self::$vertically->sorting();
+
+        self::$snake->sorting();
+
+        self::$diagonal->sorting();
+
+        self::$snail->sorting();
     }
 
 }
