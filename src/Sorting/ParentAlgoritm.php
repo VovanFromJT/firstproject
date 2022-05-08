@@ -1,11 +1,29 @@
 <?php
 
-namespace Source\Source;
+namespace Source\Sorting;
 
-use Source\Interfaces\CallOthers;
+use Source\Helper\DiffArray;
+use Source\Interfaces\ICallOthers;
+use Source\Output\IOutputInTxt;
+use Source\Output\IOutputOnScreen;
 
-class ParentAlgoritm implements CallOthers
+class ParentAlgoritm implements ICallOthers
 {
+    /**
+     * @var DiffArray
+     */
+    protected static $diff;
+
+    /**
+     * @var IOutputInTxt
+     */
+    protected static $txt;
+
+    /**
+     * @var IOutputOnScreen
+     */
+    protected static $screen;
+
     private string $name;
     protected int $sizeOfArray;
     protected array $diffArray;
@@ -27,24 +45,24 @@ class ParentAlgoritm implements CallOthers
        $this->sizeOfArray = $sizeOfArray;
        $this->inputArray = $inputArray;
 
+       self::$diff = new DiffArray();
+       self::$txt = new IOutputInTxt();
+       self::$screen = new IOutputOnScreen();
     }
 
     public function callDiffArray(): void
     {
-        $diff = new DiffArray;
-        $this->diffArray = $diff->sortDiff($this->inputArray);
+        $this->diffArray = self::$diff->sortDiff($this->inputArray);
     }
 
     public function callOutput(): void
     {
-        $txt = new OutputInTxt;
-        $screen = new OutputOnScreen;
-        $txt->outputArray(
+        self::$txt->outputArray(
             $this->outputArray,
             $this->sizeOfArray,
             $this->name
         );
-        $screen->outputArray(
+        self::$screen->outputArray(
             $this->outputArray,
             $this->sizeOfArray,
             $this->name

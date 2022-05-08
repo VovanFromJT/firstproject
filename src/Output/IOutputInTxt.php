@@ -1,9 +1,10 @@
 <?php
 
-namespace Source\Source;
-use Source\Interfaces\Output;
+namespace Source\Output;
 
-class OutputInTxt implements Output
+use Source\Interfaces\IOutput;
+
+class IOutputInTxt implements IOutput
 {
     public function outputArray(
         array $outputArray,

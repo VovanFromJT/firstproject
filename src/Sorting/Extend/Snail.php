@@ -1,10 +1,11 @@
 <?php
 
-namespace Source\Source;
+namespace Source\Sorting\Extend;
 
-use Source\Interfaces\Sort;
+use Source\Interfaces\ISort;
+use Source\Sorting\ParentAlgoritm;
 
-class Snail extends ParentAlgoritm implements Sort
+class Snail extends ParentAlgoritm implements ISort
 {
     function __construct(
         array $inputArray,

@@ -2,7 +2,7 @@
 
 namespace Source\Interfaces;
 
-interface CallOthers
+interface ICallOthers
 {
     public function callDiffArray(): void;
     public function callOutput(): void;

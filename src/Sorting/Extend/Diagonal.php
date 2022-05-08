@@ -1,10 +1,11 @@
 <?php
 
-namespace Source\Source;
+namespace Source\Sorting\Extend;
 
-use Source\Interfaces\Sort;
+use Source\Interfaces\ISort;
+use Source\Sorting\ParentAlgoritm;
 
-class Diagonal extends ParentAlgoritm implements Sort
+class Diagonal extends ParentAlgoritm implements ISort
 {
     function __construct(
         array $inputArray,

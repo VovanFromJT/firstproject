@@ -2,7 +2,7 @@
 
 namespace Source\Interfaces;
 
-interface Output
+interface IOutput
 {
     public function outputArray(
         array $outputArray,

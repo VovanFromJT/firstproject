@@ -2,7 +2,7 @@
 
 namespace Source\Interfaces;
 
-interface Sort
+interface ISort
 {
     public function sorting(): void;
 }

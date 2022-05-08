@@ -6,7 +6,11 @@
     "autoload": {
         "psr-4": {
             "Source\\": "src/",
-            "Interfaces\\": "src/"
+            "EntPoint\\": "src/",
+            "Interfaces\\": "src/",
+            "Output\\": "src/",
+            "Sorting\\": "src/",
+            "Sorting\\Extend\\": "src/"
         }
     },
     "authors": [

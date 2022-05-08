@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
-use Source\Source\CallMethods;
+use Source\EntPoint\CallMethods;
 ?>
 
 <html lang="en">
@@ -37,14 +37,25 @@ use Source\Source\CallMethods;
 </style>
 <form method="post">
     <p><br>Size of Array(n): <label>
-            <input type="number" min="2" max="100" pattern="^[ 0-9]+$" name="sizeOfArray">
+            <input type="text" pattern="^[ 0-9]+$" maxlength="3" name="sizeOfArray">
         </label>
         <input type="submit" value="Confirm"></p><hr>
-    <?php if (isset($_POST['sizeOfArray']))
-    {
+    <?php
+    if (isset($_POST['sizeOfArray'])) {
         $sizeOfArray = $_POST['sizeOfArray'];
-        $call = new CallMethods($sizeOfArray);
-        $call->callGenerate();
+        try {
+            if (
+                    !is_numeric($sizeOfArray)
+                    || $sizeOfArray < 2
+            ) {
+                throw new Exception("Value must be 2 or above");
+            } else {
+                $call = new CallMethods($sizeOfArray);
+                $call->callGenerate();
+            }
+        } catch (Exception $e) {
+            echo '<p>Message: ' .$e->getMessage().'</p>';
+        }
     }?>
 </form>
 </body>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Source\Source;
+namespace Source\Helper;
 
 class GenerateArray
 {

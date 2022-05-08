@@ -1,17 +1,18 @@
 <?php
 
-namespace Source\Source;
+namespace Source\Sorting\Extend;
 
-use Source\Interfaces\Sort;
+use Source\Interfaces\ISort;
+use Source\Sorting\ParentAlgoritm;
 
-class Vertically extends ParentAlgoritm implements Sort
+class Horizontally extends ParentAlgoritm implements ISort
 {
     function __construct(
         array $inputArray,
         int $sizeOfArray
     ) {
         parent::__construct(
-            self::VERTICAL_ALGORITM,
+            self::HORIZONTAL_ALGORITM,
             $inputArray,
             $sizeOfArray
         );
@@ -23,8 +24,8 @@ class Vertically extends ParentAlgoritm implements Sort
 
         $this->callDiffArray();
 
-        for ($secondIndex = 0; $secondIndex < $this->sizeOfArray; $secondIndex++) {
-            for ($firstIndex = 0; $firstIndex < $this->sizeOfArray; $firstIndex++) {
+        for ($firstIndex = 0; $firstIndex < $this->sizeOfArray; $firstIndex++) {
+            for ($secondIndex = 0; $secondIndex < $this->sizeOfArray; $secondIndex++) {
                 $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
                 $count++;
             }
