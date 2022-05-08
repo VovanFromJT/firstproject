@@ -54,7 +54,7 @@ use Source\EntPoint\CallMethods;
                 throw new Exception("Value must be 2 or above");
             } else {
                 $call = new CallMethods($sizeOfArray);
-                $call->callGenerate();
+                $call->callRun();
             }
         } catch (Exception $e) {
             echo '<p>Message: ' .$e->getMessage().'</p>';

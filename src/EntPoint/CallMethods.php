@@ -36,6 +36,11 @@ class CallMethods
      */
     protected static $snail;
 
+    /**
+     * @var GenerateArray
+     */
+    protected static $generateArray;
+
     protected int $sizeOfArray;
     protected array $inputArray = array();
 
@@ -43,6 +48,9 @@ class CallMethods
     {
         $this->sizeOfArray = $sizeOfArray;
 
+        self::$generateArray = new GenerateArray($this->sizeOfArray);
+        $this->inputArray = self::$generateArray->generate();
+
         self::$horizontally = new Horizontally(
             $this->inputArray,
             $this->sizeOfArray
@@ -69,39 +77,8 @@ class CallMethods
         );
     }
 
-    public function callGenerate(): void
+    public function callRun(): void
     {
-        $gen = new GenerateArray;
-        $this->inputArray = $gen->generate($this->sizeOfArray);
-        $this->callRun($this->inputArray);
-    }
-
-    public function callRun(array $inputArray): void {
-        self::$horizontally = new Horizontally(
-            $inputArray,
-            $this->sizeOfArray
-        );
-
-        self::$vertically = new Vertically(
-            $inputArray,
-            $this->sizeOfArray
-        );
-
-        self::$snake = new Snake(
-            $inputArray,
-            $this->sizeOfArray
-        );
-
-        self::$diagonal = new Diagonal(
-            $inputArray,
-            $this->sizeOfArray
-        );
-
-        self::$snail = new Snail(
-            $inputArray,
-            $this->sizeOfArray
-        );
-
         self::$horizontally->sorting();
 
         self::$vertically->sorting();
