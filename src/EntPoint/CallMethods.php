@@ -3,11 +3,11 @@
 namespace Source\EntPoint;
 
 use Source\Helper\GenerateArray;
-use Source\Sorting\Extend\Diagonal;
-use Source\Sorting\Extend\Horizontally;
-use Source\Sorting\Extend\Snail;
-use Source\Sorting\Extend\Snake;
-use Source\Sorting\Extend\Vertically;
+use Source\Sorting\Types\Diagonal;
+use Source\Sorting\Types\Horizontally;
+use Source\Sorting\Types\Snail;
+use Source\Sorting\Types\Snake;
+use Source\Sorting\Types\Vertically;
 
 class CallMethods
 {

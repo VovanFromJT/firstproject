@@ -10,7 +10,7 @@
             "Interfaces\\": "src/",
             "Output\\": "src/",
             "Sorting\\": "src/",
-            "Sorting\\Extend\\": "src/"
+            "Sorting\\Types\\": "src/"
         }
     },
     "authors": [

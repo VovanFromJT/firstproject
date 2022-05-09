@@ -1,6 +1,6 @@
 <?php
 
-namespace Source\Sorting\Extend;
+namespace Source\Sorting\Types;
 
 use Source\Interfaces\ISort;
 use Source\Sorting\ParentAlgoritm;
