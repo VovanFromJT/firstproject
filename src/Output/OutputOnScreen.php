@@ -4,24 +4,26 @@ namespace Source\Output;
 
 use Source\Interfaces\IOutput;
 
-class IOutputInTxt implements IOutput
+class OutputOnScreen implements IOutput
 {
     public function outputArray(
         array $outputArray,
         int $sizeOfArray,
         string $name
     ): void {
-        $file = fopen(
-            "files/outputArray$name.txt",
-            "w"
-        );
+        echo "<p><br>$name:<br></p>";
+        echo "<p><table>";
         for ($firstIndex = 0; $firstIndex < $sizeOfArray; $firstIndex++) {
+            echo "<tr>";
             for ($secondIndex = 0; $secondIndex < $sizeOfArray; $secondIndex++) {
-                fwrite($file, $outputArray[$firstIndex][$secondIndex]."\t");
+                echo "<td>".$outputArray[$firstIndex][$secondIndex]."</td>";
             }
-            fwrite($file, "\n");
+            echo "</tr>";
         }
+        echo "</table></p>";
 
-        fclose($file);
     }
 }
+
+
+

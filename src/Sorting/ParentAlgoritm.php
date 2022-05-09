@@ -4,8 +4,8 @@ namespace Source\Sorting;
 
 use Source\Helper\DiffArray;
 use Source\Interfaces\ICallOthers;
-use Source\Output\IOutputInTxt;
-use Source\Output\IOutputOnScreen;
+use Source\Output\OutputInTxt;
+use Source\Output\OutputOnScreen;
 
 class ParentAlgoritm implements ICallOthers
 {
@@ -15,12 +15,12 @@ class ParentAlgoritm implements ICallOthers
     protected static $diff;
 
     /**
-     * @var IOutputInTxt
+     * @var OutputInTxt
      */
     protected static $txt;
 
     /**
-     * @var IOutputOnScreen
+     * @var OutputOnScreen
      */
     protected static $screen;
 
@@ -46,8 +46,8 @@ class ParentAlgoritm implements ICallOthers
        $this->inputArray = $inputArray;
 
        self::$diff = new DiffArray();
-       self::$txt = new IOutputInTxt();
-       self::$screen = new IOutputOnScreen();
+       self::$txt = new OutputInTxt();
+       self::$screen = new OutputOnScreen();
     }
 
     public function callDiffArray(): void

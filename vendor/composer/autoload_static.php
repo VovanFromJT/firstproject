@@ -10,10 +10,20 @@ class ComposerStaticInitbdaa42cfeb11fff9a0e70f4b69ba04a9
         'S' => 
         array (
             'Source\\' => 7,
+            'Sorting\\Extend\\' => 15,
+            'Sorting\\' => 8,
+        ),
+        'O' => 
+        array (
+            'Output\\' => 7,
         ),
         'I' => 
         array (
             'Interfaces\\' => 11,
+        ),
+        'E' => 
+        array (
+            'EntPoint\\' => 9,
         ),
     );
 
@@ -22,7 +32,23 @@ class ComposerStaticInitbdaa42cfeb11fff9a0e70f4b69ba04a9
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
+        'Sorting\\Extend\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
+        'Sorting\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
+        'Output\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
         'Interfaces\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
+        'EntPoint\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
