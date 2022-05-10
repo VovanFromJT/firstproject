@@ -2,10 +2,9 @@
 
 namespace Source\Sorting\Types;
 
-use Source\Interfaces\ISort;
 use Source\Sorting\ParentAlgoritm;
 
-class Horizontally extends ParentAlgoritm implements ISort
+class Horizontally extends ParentAlgoritm
 {
     function __construct(
         array $inputArray,
@@ -20,14 +19,12 @@ class Horizontally extends ParentAlgoritm implements ISort
 
     public function sorting(): void
     {
-        $count = 0;
-
-        $this->callDiffArray();
+        $this->diffArray = $this->sortDiff($this->inputArray);
 
         for ($firstIndex = 0; $firstIndex < $this->sizeOfArray; $firstIndex++) {
             for ($secondIndex = 0; $secondIndex < $this->sizeOfArray; $secondIndex++) {
-                $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
-                $count++;
+                $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$this->count];
+                $this->count++;
             }
         }
         $this->callOutput();

@@ -57,7 +57,7 @@ use Source\EntPoint\CallMethods;
                 $call->callRun();
             }
         } catch (Exception $e) {
-            echo '<p>Message: ' .$e->getMessage().'</p>';
+            echo '<p>Message: ' . $e->getMessage() . '</p>';
         }
     }?>
 </form>

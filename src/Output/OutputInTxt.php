@@ -9,7 +9,8 @@ class OutputInTxt implements IOutput
     public function outputArray(
         array $outputArray,
         int $sizeOfArray,
-        string $name
+        string $name,
+        array $inputArray
     ): void {
         $file = fopen(
             "files/outputArray$name.txt",

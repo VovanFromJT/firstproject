@@ -2,30 +2,26 @@
 
 namespace Source\Sorting;
 
-use Source\Helper\DiffArray;
 use Source\Interfaces\ICallOthers;
+use Source\Output\OutputInJSON;
 use Source\Output\OutputInTxt;
 use Source\Output\OutputOnScreen;
+use Source\Traits\DBConnector;
+use Source\Traits\Merger;
+use Source\Traits\Outputer;
 
-class ParentAlgoritm implements ICallOthers
+abstract class ParentAlgoritm implements ICallOthers
 {
-    /**
-     * @var DiffArray
-     */
-    protected static $diff;
+    use Merger, DBConnector, Outputer;
 
-    /**
-     * @var OutputInTxt
-     */
-    protected static $txt;
-
-    /**
-     * @var OutputOnScreen
-     */
-    protected static $screen;
+    private object $diff;
+    private object $txt;
+    private object $screen;
+    private object $json;
 
     private string $name;
     protected int $sizeOfArray;
+    protected int $count;
     protected array $diffArray;
     protected array $inputArray;
     protected array $outputArray;
@@ -44,30 +40,13 @@ class ParentAlgoritm implements ICallOthers
        $this->name = $name;
        $this->sizeOfArray = $sizeOfArray;
        $this->inputArray = $inputArray;
+       $this->count = 0;
 
-       self::$diff = new DiffArray();
-       self::$txt = new OutputInTxt();
-       self::$screen = new OutputOnScreen();
+       $this->txt = new OutputInTxt();
+       $this->screen = new OutputOnScreen();
+       $this->json = new OutputInJSON();
     }
 
-    public function callDiffArray(): void
-    {
-        $this->diffArray = self::$diff->sortDiff($this->inputArray);
-    }
-
-    public function callOutput(): void
-    {
-        self::$txt->outputArray(
-            $this->outputArray,
-            $this->sizeOfArray,
-            $this->name
-        );
-        self::$screen->outputArray(
-            $this->outputArray,
-            $this->sizeOfArray,
-            $this->name
-        );
-    }
-
+    abstract protected function sorting();
 
 }

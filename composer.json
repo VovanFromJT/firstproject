@@ -10,7 +10,8 @@
             "Interfaces\\": "src/",
             "Output\\": "src/",
             "Sorting\\": "src/",
-            "Sorting\\Types\\": "src/"
+            "Sorting\\Types\\": "src/",
+            "Traits\\": "src/"
         }
     },
     "authors": [

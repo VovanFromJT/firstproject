@@ -2,10 +2,9 @@
 
 namespace Source\Sorting\Types;
 
-use Source\Interfaces\ISort;
 use Source\Sorting\ParentAlgoritm;
 
-class Diagonal extends ParentAlgoritm implements ISort
+class Diagonal extends ParentAlgoritm
 {
     function __construct(
         array $inputArray,
@@ -21,17 +20,17 @@ class Diagonal extends ParentAlgoritm implements ISort
     public function sorting(): void
     {
         $flag = "right-up";
-        $firstMin = $secondMin = $firstPosition = $secondPosition = $count = 0;
+        $firstMin = $secondMin = $firstPosition = $secondPosition = 0;
 
-        $this->callDiffArray();
+        $this->diffArray = $this->sortDiff($this->inputArray);
 
-        while ($count < $this->sizeOfArray * $this->sizeOfArray) {
+        while ($this->count < $this->sizeOfArray * $this->sizeOfArray) {
             switch ($flag) {
                 case "right-up":
                     $firstIndex = $firstMin;
                     $secondIndex = $secondMin;
-                    $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
-                    $count++;
+                    $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$this->count];
+                    $this->count++;
                     if (
                         $firstIndex == 0
                         && $secondIndex != $this->sizeOfArray - 1

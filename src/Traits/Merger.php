@@ -1,8 +1,8 @@
 <?php
 
-namespace Source\Helper;
+namespace Source\Traits;
 
-class DiffArray
+trait Merger
 {
     public function sortDiff(array $inputArray): array
     {

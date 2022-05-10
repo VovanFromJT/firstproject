@@ -9,14 +9,15 @@ class OutputOnScreen implements IOutput
     public function outputArray(
         array $outputArray,
         int $sizeOfArray,
-        string $name
+        string $name,
+        array $inputArray
     ): void {
         echo "<p><br>$name:<br></p>";
         echo "<p><table>";
         for ($firstIndex = 0; $firstIndex < $sizeOfArray; $firstIndex++) {
             echo "<tr>";
             for ($secondIndex = 0; $secondIndex < $sizeOfArray; $secondIndex++) {
-                echo "<td>".$outputArray[$firstIndex][$secondIndex]."</td>";
+                echo "<td>" . $outputArray[$firstIndex][$secondIndex] . "</td>";
             }
             echo "</tr>";
         }

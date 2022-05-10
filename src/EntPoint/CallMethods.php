@@ -11,67 +11,44 @@ use Source\Sorting\Types\Vertically;
 
 class CallMethods
 {
-    /**
-     * @var Horizontally
-     */
-    protected static $horizontally;
-
-    /**
-     * @var Vertically
-     */
-    protected static $vertically;
-
-    /**
-     * @var Snake
-     */
-    protected static $snake;
-
-    /**
-     * @var Diagonal
-     */
-    protected static $diagonal;
-
-    /**
-     * @var Snail
-     */
-    protected static $snail;
-
-    /**
-     * @var GenerateArray
-     */
-    protected static $generateArray;
+    private object $horizontally;
+    private object $vertically;
+    private object $snake;
+    private object $diagonal;
+    private object $snail;
+    private object $generateArray;
 
     protected int $sizeOfArray;
-    protected array $inputArray = array();
+    protected array $inputArray;
 
-    public function __construct(int $sizeOfArray)
+    function __construct(int $sizeOfArray)
     {
         $this->sizeOfArray = $sizeOfArray;
 
-        self::$generateArray = new GenerateArray($this->sizeOfArray);
-        $this->inputArray = self::$generateArray->generate();
+        $this->generateArray = new GenerateArray($this->sizeOfArray);
+        $this->inputArray = $this->generateArray->generate();
 
-        self::$horizontally = new Horizontally(
+        $this->horizontally = new Horizontally(
             $this->inputArray,
             $this->sizeOfArray
         );
 
-        self::$vertically = new Vertically(
+        $this->vertically = new Vertically(
             $this->inputArray,
             $this->sizeOfArray
         );
 
-        self::$snake = new Snake(
+        $this->snake = new Snake(
             $this->inputArray,
             $this->sizeOfArray
         );
 
-        self::$diagonal = new Diagonal(
+        $this->diagonal = new Diagonal(
             $this->inputArray,
             $this->sizeOfArray
         );
 
-        self::$snail = new Snail(
+        $this->snail = new Snail(
             $this->inputArray,
             $this->sizeOfArray
         );
@@ -79,15 +56,15 @@ class CallMethods
 
     public function callRun(): void
     {
-        self::$horizontally->sorting();
+        $this->horizontally->sorting();
 
-        self::$vertically->sorting();
+        $this->vertically->sorting();
 
-        self::$snake->sorting();
+        $this->snake->sorting();
 
-        self::$diagonal->sorting();
+        $this->diagonal->sorting();
 
-        self::$snail->sorting();
+        $this->snail->sorting();
     }
 
 }

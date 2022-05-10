@@ -2,10 +2,9 @@
 
 namespace Source\Sorting\Types;
 
-use Source\Interfaces\ISort;
 use Source\Sorting\ParentAlgoritm;
 
-class Snail extends ParentAlgoritm implements ISort
+class Snail extends ParentAlgoritm
 {
     function __construct(
         array $inputArray,
@@ -21,19 +20,19 @@ class Snail extends ParentAlgoritm implements ISort
     public function sorting(): void
     {
         $flag = "right";
-        $firstMin = $secondMin = $count = 0;
+        $firstMin = $secondMin = 0;
         $firstMax = $secondMax = $this->sizeOfArray-1;
 
-        $this->callDiffArray();
+        $this->diffArray = $this->sortDiff($this->inputArray);
 
-        while ($count < $this->sizeOfArray * $this->sizeOfArray) {
+        while ($this->count < $this->sizeOfArray * $this->sizeOfArray) {
             switch ($flag) {
                 case "right":
                     $firstIndex = $firstMin;
                     for ($secondIndex = $secondMin; $secondIndex <= $secondMax; $secondIndex++) {
                         if (empty($this->outputArray[$firstIndex][$secondIndex])) {
-                            $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
-                            $count++;
+                            $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$this->count];
+                            $this->count++;
                         }
                     }
                     $firstMin++;
@@ -43,8 +42,8 @@ class Snail extends ParentAlgoritm implements ISort
                     $secondIndex = $secondMax;
                     for ($firstIndex = $firstMin; $firstIndex <= $firstMax; $firstIndex++) {
                         if (empty($this->outputArray[$firstIndex][$secondIndex])) {
-                            $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
-                            $count++;
+                            $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$this->count];
+                            $this->count++;
                         }
                     }
                     $secondMax--;
@@ -54,8 +53,8 @@ class Snail extends ParentAlgoritm implements ISort
                     $firstIndex = $firstMax;
                     for ($secondIndex = $secondMax; $secondIndex >= $secondMin; $secondIndex--) {
                         if (empty($this->outputArray[$firstIndex][$secondIndex])) {
-                            $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
-                            $count++;
+                            $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$this->count];
+                            $this->count++;
                         }
                     }
                     $firstMax--;
@@ -65,8 +64,8 @@ class Snail extends ParentAlgoritm implements ISort
                     $secondIndex = $secondMin;
                     for ($firstIndex = $firstMax; $firstIndex >= $firstMin; $firstIndex--) {
                         if (empty($this->outputArray[$firstIndex][$secondIndex])) {
-                            $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$count];
-                            $count++;
+                            $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$this->count];
+                            $this->count++;
                         }
                     }
                     $secondMin++;

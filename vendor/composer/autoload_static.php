@@ -10,7 +10,7 @@ class ComposerStaticInitbdaa42cfeb11fff9a0e70f4b69ba04a9
         'S' => 
         array (
             'Source\\' => 7,
-            'Sorting\\Extend\\' => 15,
+            'Sorting\\Types\\' => 14,
             'Sorting\\' => 8,
         ),
         'O' => 
@@ -32,7 +32,7 @@ class ComposerStaticInitbdaa42cfeb11fff9a0e70f4b69ba04a9
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
-        'Sorting\\Extend\\' => 
+        'Sorting\\Types\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
