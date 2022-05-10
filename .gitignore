@@ -1,3 +1,4 @@
-.idea/
-files/
-vendor/
+
+/files/
+/vendor/
+/.idea/
