@@ -4,13 +4,12 @@ namespace Source\Traits;
 
 trait Merger
 {
-    public function sortDiff(array $inputArray): array
+    public function callDiffArray(): void
     {
-        $diffArray = call_user_func_array(
+        $this->diffArray = call_user_func_array(
             'array_merge',
-            $inputArray
+            $this->inputArray
         );
-        sort($diffArray);
-        return $diffArray;
+        sort($this->diffArray);
     }
 }

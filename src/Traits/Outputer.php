@@ -20,13 +20,11 @@ trait Outputer
             $this->inputArray
         );
 
-        $jsonArray = $this->json->outputArray(
+        $this->jsonArray = $this->json->outputArray(
             $this->outputArray,
             $this->sizeOfArray,
             $this->name,
             $this->inputArray
         );
-
-        $this->callDBConnection($jsonArray);
     }
 }

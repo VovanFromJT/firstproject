@@ -2,7 +2,7 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-use Source\EntPoint\CallMethods;
+use Source\Controller\CallMethods;
 
 ?>
 

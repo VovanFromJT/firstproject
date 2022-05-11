@@ -22,8 +22,6 @@ class Snake extends ParentAlgoritm
         $flag = "right";
         $firstMin = 0;
 
-        $this->diffArray = $this->sortDiff($this->inputArray);
-
         while ($this->count<$this->sizeOfArray * $this->sizeOfArray) {
             switch ($flag) {
                 case "right":
@@ -46,6 +44,5 @@ class Snake extends ParentAlgoritm
                     break;
             }
         }
-        $this->callOutput();
     }
 }

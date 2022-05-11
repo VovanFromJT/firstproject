@@ -21,9 +21,7 @@ class Snail extends ParentAlgoritm
     {
         $flag = "right";
         $firstMin = $secondMin = 0;
-        $firstMax = $secondMax = $this->sizeOfArray-1;
-
-        $this->diffArray = $this->sortDiff($this->inputArray);
+        $firstMax = $secondMax = $this->sizeOfArray - 1;
 
         while ($this->count < $this->sizeOfArray * $this->sizeOfArray) {
             switch ($flag) {
@@ -73,6 +71,5 @@ class Snail extends ParentAlgoritm
                     break;
             }
         }
-        $this->callOutput();
     }
 }

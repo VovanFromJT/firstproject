@@ -2,7 +2,6 @@
 
 namespace Source\Sorting;
 
-use Source\Interfaces\ICallOthers;
 use Source\Output\OutputInJSON;
 use Source\Output\OutputInTxt;
 use Source\Output\OutputOnScreen;
@@ -10,7 +9,7 @@ use Source\Traits\DBConnector;
 use Source\Traits\Merger;
 use Source\Traits\Outputer;
 
-abstract class ParentAlgoritm implements ICallOthers
+abstract class ParentAlgoritm
 {
     use Merger, DBConnector, Outputer;
 
@@ -23,6 +22,7 @@ abstract class ParentAlgoritm implements ICallOthers
     protected int $sizeOfArray;
     protected int $count;
     protected array $diffArray;
+    protected array $jsonArray;
     protected array $inputArray;
     protected array $outputArray;
 

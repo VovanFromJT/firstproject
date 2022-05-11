@@ -1,6 +1,6 @@
 <?php
 
-namespace Source\EntPoint;
+namespace Source\Controller;
 
 use Source\Helper\GenerateArray;
 use Source\Sorting\Types\Diagonal;
@@ -56,15 +56,30 @@ class CallMethods
 
     public function callRun(): void
     {
+        $this->horizontally->callDiffArray();
         $this->horizontally->sorting();
+        $this->horizontally->callOutput();
+        $this->horizontally->callDBConnection();
 
+        $this->vertically->callDiffArray();
         $this->vertically->sorting();
+        $this->vertically->callOutput();
+        $this->vertically->callDBConnection();
 
+        $this->snake->callDiffArray();
         $this->snake->sorting();
+        $this->snake->callOutput();
+        $this->snake->callDBConnection();
 
+        $this->diagonal->callDiffArray();
         $this->diagonal->sorting();
+        $this->diagonal->callOutput();
+        $this->diagonal->callDBConnection();
 
+        $this->snail->callDiffArray();
         $this->snail->sorting();
+        $this->snail->callOutput();
+        $this->snail->callDBConnection();
     }
 
 }

@@ -22,8 +22,6 @@ class Diagonal extends ParentAlgoritm
         $flag = "right-up";
         $firstMin = $secondMin = $firstPosition = $secondPosition = 0;
 
-        $this->diffArray = $this->sortDiff($this->inputArray);
-
         while ($this->count < $this->sizeOfArray * $this->sizeOfArray) {
             switch ($flag) {
                 case "right-up":
@@ -57,6 +55,5 @@ class Diagonal extends ParentAlgoritm
                     break;
             }
         }
-        $this->callOutput();
     }
 }

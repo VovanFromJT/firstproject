@@ -6,7 +6,7 @@
     "autoload": {
         "psr-4": {
             "Source\\": "src/",
-            "EntPoint\\": "src/",
+            "Controller\\": "src/",
             "Interfaces\\": "src/",
             "Output\\": "src/",
             "Sorting\\": "src/",
@@ -19,5 +19,8 @@
             "name": "MrPocket",
             "email": "mr.pocket69@gmail.com"
         }
-    ]
+    ],
+  "require": {
+    "ext-mysqli": "*"
+  }
 }

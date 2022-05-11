@@ -19,14 +19,11 @@ class Vertically extends ParentAlgoritm
 
     public function sorting(): void
     {
-        $this->diffArray = $this->sortDiff($this->inputArray);
-
         for ($secondIndex = 0; $secondIndex < $this->sizeOfArray; $secondIndex++) {
             for ($firstIndex = 0; $firstIndex < $this->sizeOfArray; $firstIndex++) {
                 $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$this->count];
                 $this->count++;
             }
         }
-        $this->callOutput();
     }
 }

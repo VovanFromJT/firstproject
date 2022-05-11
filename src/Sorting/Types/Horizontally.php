@@ -19,14 +19,11 @@ class Horizontally extends ParentAlgoritm
 
     public function sorting(): void
     {
-        $this->diffArray = $this->sortDiff($this->inputArray);
-
         for ($firstIndex = 0; $firstIndex < $this->sizeOfArray; $firstIndex++) {
             for ($secondIndex = 0; $secondIndex < $this->sizeOfArray; $secondIndex++) {
                 $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$this->count];
                 $this->count++;
             }
         }
-        $this->callOutput();
     }
 }

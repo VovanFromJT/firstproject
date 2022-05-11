@@ -7,16 +7,23 @@ use Source\DBConnector\DatabaseGateway;
 
 trait DBConnector
 {
-    public function callDBConnection(array $jsonArray): void
+    public function callDBConnection(): void
     {
-        $inputArray = json_encode($jsonArray[1]);
-        $outputArray = json_encode($jsonArray[2]);
-        $config = new DatabaseConfiguration("localhost", 3306, "phpmyadmin", "koshak2002");
+        $name = $this->jsonArray[0];
+        $inputArray = json_encode($this->jsonArray[1]);
+        $outputArray = json_encode($this->jsonArray[2]);
+        $date = $this->jsonArray[3];
+        $config = new DatabaseConfiguration(
+            "localhost",
+            3306,
+            "phpmyadmin",
+            "koshak2002"
+        );
         $gateway = new DatabaseGateway($config);
 
         $connection = $gateway->getConfiguration();
         $sql = "INSERT INTO Sorting (name, inputArray, outputArray, date) 
-                VALUES ('$jsonArray[0]', '$inputArray', '$outputArray', '$jsonArray[3]')";
+                VALUES ('$name', '$inputArray', '$outputArray', '$date')";
 
         if ($connection->query($sql) === TRUE) {
             echo "<p>New record in DB created successfully</p>";
