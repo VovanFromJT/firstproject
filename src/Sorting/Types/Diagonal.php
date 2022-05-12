@@ -17,7 +17,7 @@ class Diagonal extends ParentAlgoritm
         );
     }
 
-    public function sorting(): void
+    public function sortArray(): void
     {
         $flag = "right-up";
         $firstMin = $secondMin = $firstPosition = $secondPosition = 0;

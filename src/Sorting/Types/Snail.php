@@ -17,7 +17,7 @@ class Snail extends ParentAlgoritm
         );
     }
 
-    public function sorting(): void
+    public function sortArray(): void
     {
         $flag = "right";
         $firstMin = $secondMin = 0;

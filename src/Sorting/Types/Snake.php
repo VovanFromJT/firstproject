@@ -17,7 +17,7 @@ class Snake extends ParentAlgoritm
         );
     }
 
-    public function sorting(): void
+    public function sortArray(): void
     {
         $flag = "right";
         $firstMin = 0;

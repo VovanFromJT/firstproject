@@ -2,7 +2,7 @@
 
 namespace Source\Sorting;
 
-use Source\Output\OutputInJSON;
+use Source\Output\OutputInJson;
 use Source\Output\OutputInTxt;
 use Source\Output\OutputOnScreen;
 use Source\Traits\DBConnector;
@@ -13,14 +13,13 @@ abstract class ParentAlgoritm
 {
     use Merger, DBConnector, Outputer;
 
-    private object $diff;
     private object $txt;
     private object $screen;
     private object $json;
 
     private string $name;
     protected int $sizeOfArray;
-    protected int $count;
+    protected int $count = 0;
     protected array $diffArray;
     protected array $jsonArray;
     protected array $inputArray;
@@ -40,13 +39,12 @@ abstract class ParentAlgoritm
        $this->name = $name;
        $this->sizeOfArray = $sizeOfArray;
        $this->inputArray = $inputArray;
-       $this->count = 0;
 
        $this->txt = new OutputInTxt();
        $this->screen = new OutputOnScreen();
-       $this->json = new OutputInJSON();
+       $this->json = new OutputInJson();
     }
 
-    abstract protected function sorting();
+    abstract protected function sortArray(): void;
 
 }

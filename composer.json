@@ -20,7 +20,9 @@
             "email": "mr.pocket69@gmail.com"
         }
     ],
-  "require": {
-    "ext-mysqli": "*"
+  "require":
+  {
+      "ext-mysqli": "*",
+      "twbs/bootstrap": "5.1.3"
   }
 }

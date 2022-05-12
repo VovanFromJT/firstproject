@@ -2,6 +2,8 @@
 
 namespace Source\DBConnector;
 
+use mysqli;
+
 class DatabaseGateway
 {
     private object $configuration;
@@ -13,7 +15,7 @@ class DatabaseGateway
 
     public function getConfiguration(): object
     {
-        return new \mysqli(
+        return new mysqli(
             $this->configuration->getHost(),
             $this->configuration->getUsername(),
             $this->configuration->getPassword(),

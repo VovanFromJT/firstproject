@@ -17,7 +17,7 @@ class Vertically extends ParentAlgoritm
         );
     }
 
-    public function sorting(): void
+    public function sortArray(): void
     {
         for ($secondIndex = 0; $secondIndex < $this->sizeOfArray; $secondIndex++) {
             for ($firstIndex = 0; $firstIndex < $this->sizeOfArray; $firstIndex++) {

@@ -4,7 +4,7 @@ namespace Source\Output;
 
 use Source\Interfaces\IOutput;
 
-class OutputInJSON implements IOutput
+class OutputInJson implements IOutput
 {
     public function outputArray(
         array $outputArray,

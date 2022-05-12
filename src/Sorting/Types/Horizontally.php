@@ -17,7 +17,7 @@ class Horizontally extends ParentAlgoritm
         );
     }
 
-    public function sorting(): void
+    public function sortArray(): void
     {
         for ($firstIndex = 0; $firstIndex < $this->sizeOfArray; $firstIndex++) {
             for ($secondIndex = 0; $secondIndex < $this->sizeOfArray; $secondIndex++) {
