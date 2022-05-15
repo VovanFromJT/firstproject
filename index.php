@@ -50,9 +50,6 @@ $action = 0;
         elseif ($_POST['toDB']){
             $action = 2;
         }
-        else{
-            $action = 0;
-        }
         $call = new CallMethods($sizeOfArray, $kindOfSort, $action);
         $call->callRun();
     }
