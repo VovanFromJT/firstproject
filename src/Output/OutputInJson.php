@@ -8,6 +8,7 @@ use Source\Traits\DBConnector;
 class OutputInJson implements IOutput
 {
     use DBConnector;
+
     public function outputArray(
         array $outputArray,
         int $sizeOfArray,

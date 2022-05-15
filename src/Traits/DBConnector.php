@@ -32,9 +32,8 @@ trait DBConnector
         $sql = "INSERT INTO Sorting (name, inputArray, outputArray, date) 
                 VALUES ('$name', '$inputArray', '$outputArray', '$date')";
 
-        if ($connection->query($sql) === TRUE) {
-            return;
-            //echo "<p>New record in DB created successfully</p>";
+        if ($connection->query($sql) === true) {
+            echo "<p>New record in DB created successfully</p>";
         } else {
             echo "<p>Error: " . $sql . "<br>" . $connection->error . "</p>";
         }

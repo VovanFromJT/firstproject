@@ -3,8 +3,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use Source\Controller\CallMethods;
 
-const CSS_PATH = 'template/css/';
-const JS_PATH = 'template/js/';
+const CSS_PATH = 'UI/css/';
+const JS_PATH = 'UI/js/';
 
 $action = 0;
 ?>
@@ -32,7 +32,10 @@ $action = 0;
         <option value="snake">Snake</option>
         <option value="diagonal">Diagonal</option>
         <option value="snail">Snail</option>
-    </select><label for="kindOfSort">Size of Array(n): </label>
+    </select>
+    <label>
+        Size of Array(n):
+    </label>
     <label>
         <input type="range" min="2" max="20" value="2" oninput="this.nextElementSibling.value = this.value" name="sizeOfArray" required>
     <output>2</output>

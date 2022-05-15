@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("#kindOfSort").change(function(){
+    $(this).change(function(){
         let kindOfSort = $("#kindOfSort").val();
         let sizeOfArray = $("#sizeOfArray").val();
         $.ajax({
