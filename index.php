@@ -1,69 +1,62 @@
 <?php
-
-require __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 use Source\Controller\CallMethods;
-use Source\Helper\GenerateArray;
 
+const CSS_PATH = 'template/css/';
+const JS_PATH = 'template/js/';
+
+$action = 0;
 ?>
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>main.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php echo JS_PATH; ?>main.js"></script>
     <title>Sorting</title>
     <h2>Sorting Arrays</h2>
 </head>
 <body>
-<style>
-    h2 {
-       text-align: center;
-    }
-    p {
-        font-size: 6mm;
-        text-align: center;
-    }
-    td {
 
-        font-size: 5.5mm;
-        font-family: "Arial", serif;
-        text-align: center;
-        align-content: center;
-        border: 0.2mm solid black;
-        padding: 10px;
-    }
-    table
-    {
-        margin: 10px auto;
-    }
-</style>
-<form method="post">
-    <p><br>Size of Array(n): <label>
-            <input type="text" pattern="^[ 0-9]+$" maxlength="3" name="sizeOfArray" required>
-        </label>
-        <input type="submit" value="Confirm"></p><hr>
+<form id="formSubmit">
+    <select name="kindOfSort" id="kindOfSort" required>
+        <option value="all">All Sort</option>
+        <option value="horizontal">Horizontal</option>
+        <option value="vertical">Vertical</option>
+        <option value="snake">Snake</option>
+        <option value="diagonal">Diagonal</option>
+        <option value="snail">Snail</option>
+    </select><label for="kindOfSort">Size of Array(n): </label>
+    <label>
+        <input type="range" min="2" max="20" value="2" oninput="this.nextElementSibling.value = this.value" name="sizeOfArray" required>
+    <output>2</output>
+    </label>
+    <input type="submit" value="Sort">
+    <input type="submit" formmethod="post" name="inFile" value="File">
+    <input type="submit" formmethod="post" name="toDB" value="DB">
     <?php
-    if (isset($_POST['sizeOfArray'])) {
-        $sizeOfArray = $_POST['sizeOfArray'];
-        try {
-            if (
-                    !is_numeric($sizeOfArray)
-                    || $sizeOfArray < 2
-            ) {
-                throw new Exception("Value must be 2 or above");
-            } else {
-                $generateArray = new GenerateArray($sizeOfArray);
-                $inputArray = $generateArray->generate();
-
-                $call = new CallMethods($sizeOfArray, $inputArray);
-                $call->callRun();
-            }
-        } catch (Exception $e) {
-            echo '<p>Message: ' . $e->getMessage() . '</p>';
+    if ($_GET['sizeOfArray']) {
+        $sizeOfArray = $_GET['sizeOfArray'];
+        $kindOfSort = $_GET['kindOfSort'];
+        if ($_POST['inFile']){
+            $action = 1;
         }
-    }?>
+        elseif ($_POST['toDB']){
+            $action = 2;
+        }
+        else{
+            $action = 0;
+        }
+        $call = new CallMethods($sizeOfArray, $kindOfSort, $action);
+        $call->callRun();
+    }
+    ?>
 </form>
 </body>
 </html>

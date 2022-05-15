@@ -1,17 +1,10 @@
 <?php
 
-namespace Source\Helper;
+namespace Source\Traits;
 
-class GenerateArray
+trait Generator
 {
-    protected int $sizeOfArray;
-
-    function __construct(int $sizeOfArray)
-    {
-        $this->sizeOfArray = $sizeOfArray;
-    }
-
-	public function generate(): array
+    public function generateArray(): void
     {
         $inputArray = array();
         for ($firstIndex = 0; $firstIndex < $this->sizeOfArray; $firstIndex++) {
@@ -19,6 +12,12 @@ class GenerateArray
                 $inputArray[$firstIndex][$secondIndex] = rand(0, $this->sizeOfArray * $this->sizeOfArray);
             }
         }
-        return $inputArray;
-	}
+        $this->inputArray = $inputArray;
+
+        $this->diffArray = call_user_func_array(
+            'array_merge',
+            $this->inputArray
+        );
+        sort($this->diffArray);
+    }
 }

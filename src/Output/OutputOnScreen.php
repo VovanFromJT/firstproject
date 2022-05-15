@@ -22,7 +22,6 @@ class OutputOnScreen implements IOutput
             echo "</tr>";
         }
         echo "</table></p>";
-
     }
 }
 

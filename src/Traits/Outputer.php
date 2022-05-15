@@ -6,25 +6,31 @@ trait Outputer
 {
     public function callOutput(): void
     {
-        $this->txt->outputArray(
-            $this->outputArray,
-            $this->sizeOfArray,
-            $this->name,
-            $this->inputArray
-        );
-
-        $this->screen->outputArray(
-            $this->outputArray,
-            $this->sizeOfArray,
-            $this->name,
-            $this->inputArray
-        );
-
-        $this->jsonArray = $this->json->outputArray(
-            $this->outputArray,
-            $this->sizeOfArray,
-            $this->name,
-            $this->inputArray
-        );
+        switch ($this->action){
+            case 0:
+                $this->screen->outputArray(
+                    $this->outputArray,
+                    $this->sizeOfArray,
+                    $this->name,
+                    $this->inputArray
+                );
+                break;
+            case 1:
+                $this->txt->outputArray(
+                    $this->outputArray,
+                    $this->sizeOfArray,
+                    $this->name,
+                    $this->inputArray
+                );
+                break;
+            case 2:
+                $this->json->outputArray(
+                    $this->outputArray,
+                    $this->sizeOfArray,
+                    $this->name,
+                    $this->inputArray
+                );
+                break;
+        }
     }
 }

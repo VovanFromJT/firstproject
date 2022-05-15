@@ -1,0 +1,48 @@
+h2 {
+    text-align: center;
+}
+p {
+    font-size: 7mm;
+    text-align: center;
+}
+td {
+    font-size: 5mm;
+    text-align: center;
+    align-content: center;
+    border: 0.2mm solid black;
+    padding: 10px;
+    background-color: rgba(204, 31, 71, 0.76);
+    color:#fff;
+}
+table
+{
+    margin: 10px auto;
+}
+input[type=submit] {
+    font-size: 20px;
+    margin-left: 15px;
+    height: 35px;
+    width: 140px;
+    border-radius: 10px;
+    border: 0.2mm solid black;
+    background-color: #6f06f1;
+    color:#fff;
+}
+output {
+    font-size: 5.5mm;
+    margin-left: 15px;
+    border: 0.2mm solid black;
+    padding-left: 3mm;
+    padding-right: 3mm;
+    border-radius: 30px;
+    background-color: #198cb6;
+    color:#fff;
+}
+
+select {
+    margin-right: 15px;
+}
+
+form {
+    text-align: center;
+}

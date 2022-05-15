@@ -5,13 +5,13 @@ namespace Source\Sorting;
 use Source\Output\OutputInJson;
 use Source\Output\OutputInTxt;
 use Source\Output\OutputOnScreen;
-use Source\Traits\DBConnector;
-use Source\Traits\Merger;
+use Source\Traits\Generator;
 use Source\Traits\Outputer;
+use Source\Traits\Runner;
 
 abstract class ParentAlgoritm
 {
-    use Merger, DBConnector, Outputer;
+    use Generator, Outputer, Runner;
 
     private object $txt;
     private object $screen;
@@ -19,9 +19,9 @@ abstract class ParentAlgoritm
 
     private string $name;
     protected int $sizeOfArray;
+    protected int $action;
     protected int $count = 0;
     protected array $diffArray;
-    protected array $jsonArray;
     protected array $inputArray;
     protected array $outputArray;
 
@@ -33,12 +33,12 @@ abstract class ParentAlgoritm
 
     function __construct(
         string $name,
-        array $inputArray,
-        int $sizeOfArray
+        int $sizeOfArray,
+        int $action
     ) {
        $this->name = $name;
        $this->sizeOfArray = $sizeOfArray;
-       $this->inputArray = $inputArray;
+       $this->action = $action;
 
        $this->txt = new OutputInTxt();
        $this->screen = new OutputOnScreen();

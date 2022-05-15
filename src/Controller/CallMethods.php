@@ -10,72 +10,90 @@ use Source\Sorting\Types\Vertically;
 
 class CallMethods
 {
-    private object $horizontally;
-    private object $vertically;
-    private object $snake;
-    private object $diagonal;
-    private object $snail;
-
     protected int $sizeOfArray;
-    protected array $inputArray;
+    private string $kindOfSort;
+    private int $action;
 
-    function __construct(int $sizeOfArray, array $inputArray)
-    {
+    function __construct(
+        int $sizeOfArray,
+        string $kindOfSort,
+        int $action
+    ) {
         $this->sizeOfArray = $sizeOfArray;
-        $this->inputArray = $inputArray;
-
-        $this->horizontally = new Horizontally(
-            $this->inputArray,
-            $this->sizeOfArray
-        );
-
-        $this->vertically = new Vertically(
-            $this->inputArray,
-            $this->sizeOfArray
-        );
-
-        $this->snake = new Snake(
-            $this->inputArray,
-            $this->sizeOfArray
-        );
-
-        $this->diagonal = new Diagonal(
-            $this->inputArray,
-            $this->sizeOfArray
-        );
-
-        $this->snail = new Snail(
-            $this->inputArray,
-            $this->sizeOfArray
-        );
+        $this->kindOfSort = $kindOfSort;
+        $this->action = $action;
     }
 
     public function callRun(): void
     {
-        $this->horizontally->callDiffArray();
-        $this->horizontally->sortArray();
-        $this->horizontally->callOutput();
-        $this->horizontally->callDBConnection();
+        switch ($this->kindOfSort) {
+            case "horizontal":
+                $horizontally = new Horizontally(
+                    $this->sizeOfArray,
+                    $this->action
+                );
+                $horizontally->runApp();
+                break;
+            case "vertical":
+                $vertically = new Vertically(
+                    $this->sizeOfArray,
+                    $this->action
+                );
+                $vertically->runApp();
+                break;
+            case "snake":
+                $snake = new Snake(
+                    $this->sizeOfArray,
+                    $this->action
+                );
+                $snake->runApp();
+                break;
+            case "diagonal":
+                $diagonal = new Diagonal(
+                    $this->sizeOfArray,
+                    $this->action
+                );
+                $diagonal->runApp();
+                break;
+            case "snail":
+                $snail = new Snail(
+                    $this->sizeOfArray,
+                    $this->action
+                );
+                $snail->runApp();
+                break;
+            default:
+                $horizontally = new Horizontally(
+                    $this->sizeOfArray,
+                    $this->action
+                );
 
-        $this->vertically->callDiffArray();
-        $this->vertically->sortArray();
-        $this->vertically->callOutput();
-        $this->vertically->callDBConnection();
+                $vertically = new Vertically(
+                    $this->sizeOfArray,
+                    $this->action
+                );
 
-        $this->snake->callDiffArray();
-        $this->snake->sortArray();
-        $this->snake->callOutput();
-        $this->snake->callDBConnection();
+                $snake = new Snake(
+                    $this->sizeOfArray,
+                    $this->action
+                );
 
-        $this->diagonal->callDiffArray();
-        $this->diagonal->sortArray();
-        $this->diagonal->callOutput();
-        $this->diagonal->callDBConnection();
+                $diagonal = new Diagonal(
+                    $this->sizeOfArray,
+                    $this->action
+                );
 
-        $this->snail->callDiffArray();
-        $this->snail->sortArray();
-        $this->snail->callOutput();
-        $this->snail->callDBConnection();
+                $snail = new Snail(
+                    $this->sizeOfArray,
+                    $this->action
+                );
+
+                $horizontally->runApp();
+                $vertically->runApp();
+                $snake->runApp();
+                $diagonal->runApp();
+                $snail->runApp();
+        }
     }
 
 }

@@ -12,9 +12,8 @@ class OutputInTxt implements IOutput
         string $name,
         array $inputArray
     ): void {
-        $time = date("h:ia");
         $file = fopen(
-            "files/" . $name . "_" . $time . ".txt",
+            "files/txt/" . $name . ".txt",
             "w"
         );
         for ($firstIndex = 0; $firstIndex < $sizeOfArray; $firstIndex++) {
