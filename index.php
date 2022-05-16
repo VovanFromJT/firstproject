@@ -3,10 +3,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use Source\Controller\CallMethods;
 
-const CSS_PATH = 'UI/css/';
-const JS_PATH = 'UI/js/';
-
-$action = 0;
+const CSS_PATH = 'resources/css/';
+const JS_PATH = 'resources/js/';
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +35,7 @@ $action = 0;
         Size of Array(n):
     </label>
     <label>
-        <input type="range" min="2" max="20" value="2" oninput="this.nextElementSibling.value = this.value" name="sizeOfArray" required>
+        <input type="range" min="2" max="20" value="2" oninput="this.nextElementSibling.value = this.value" id="sizeOfArray" name="sizeOfArray" required>
     <output>2</output>
     </label>
     <input type="submit" value="Sort">
@@ -45,6 +43,7 @@ $action = 0;
     <input type="submit" formmethod="post" name="toDB" value="DB">
     <?php
     if ($_GET['sizeOfArray']) {
+        $action = 0;
         $sizeOfArray = $_GET['sizeOfArray'];
         $kindOfSort = $_GET['kindOfSort'];
         if ($_POST['inFile']){
@@ -53,7 +52,11 @@ $action = 0;
         elseif ($_POST['toDB']){
             $action = 2;
         }
-        $call = new CallMethods($sizeOfArray, $kindOfSort, $action);
+        $call = new CallMethods(
+                $sizeOfArray,
+                $kindOfSort,
+                $action
+        );
         $call->callRun();
     }
     ?>

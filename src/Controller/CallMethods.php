@@ -67,22 +67,18 @@ class CallMethods
                     $this->sizeOfArray,
                     $this->action
                 );
-
                 $vertically = new Vertically(
                     $this->sizeOfArray,
                     $this->action
                 );
-
                 $snake = new Snake(
                     $this->sizeOfArray,
                     $this->action
                 );
-
                 $diagonal = new Diagonal(
                     $this->sizeOfArray,
                     $this->action
                 );
-
                 $snail = new Snail(
                     $this->sizeOfArray,
                     $this->action
@@ -93,6 +89,7 @@ class CallMethods
                 $snake->runApp();
                 $diagonal->runApp();
                 $snail->runApp();
+                break;
         }
     }
 

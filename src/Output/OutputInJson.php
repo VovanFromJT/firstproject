@@ -14,7 +14,7 @@ class OutputInJson implements IOutput
         int $sizeOfArray,
         string $name,
         array $inputArray
-    ){
+    ) {
         $jsonArray = [
             $name,
             $inputArray,

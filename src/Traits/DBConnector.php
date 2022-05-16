@@ -33,7 +33,7 @@ trait DBConnector
                 VALUES ('$name', '$inputArray', '$outputArray', '$date')";
 
         if ($connection->query($sql) === true) {
-            echo "<p>New record in DB created successfully</p>";
+            echo "<script type='text/javascript'>alert('$name record in DB created successfully')</script>";
         } else {
             echo "<p>Error: " . $sql . "<br>" . $connection->error . "</p>";
         }

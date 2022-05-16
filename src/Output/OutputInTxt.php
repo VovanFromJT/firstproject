@@ -2,6 +2,7 @@
 
 namespace Source\Output;
 
+use Exception;
 use Source\Interfaces\IOutput;
 
 class OutputInTxt implements IOutput
@@ -12,17 +13,21 @@ class OutputInTxt implements IOutput
         string $name,
         array $inputArray
     ): void {
-        $file = fopen(
-            "files/txt/" . $name . ".txt",
-            "w"
-        );
-        for ($firstIndex = 0; $firstIndex < $sizeOfArray; $firstIndex++) {
-            for ($secondIndex = 0; $secondIndex < $sizeOfArray; $secondIndex++) {
-                fwrite($file, $outputArray[$firstIndex][$secondIndex]."\t");
+        try {
+            $file = fopen(
+                "files/txt/" . $name . ".txt",
+                "w"
+            );
+            for ($firstIndex = 0; $firstIndex < $sizeOfArray; $firstIndex++) {
+                for ($secondIndex = 0; $secondIndex < $sizeOfArray; $secondIndex++) {
+                    fwrite($file, $outputArray[$firstIndex][$secondIndex] . "\t");
+                }
+                fwrite($file, "\n");
             }
-            fwrite($file, "\n");
+            fclose($file);
         }
-
-        fclose($file);
+        catch (Exception $e) {
+            echo "Message: " . $e->getMessage();
+        }
     }
 }
