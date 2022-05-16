@@ -31,7 +31,7 @@ const JS_PATH = 'resources/js/';
         <option value="diagonal">Diagonal</option>
         <option value="snail">Snail</option>
     </select>
-    <label>
+    <label for="kindOfSort">
         Size of Array(n):
     </label>
     <label>
@@ -41,8 +41,9 @@ const JS_PATH = 'resources/js/';
     <input type="submit" value="Sort">
     <input type="submit" formmethod="post" name="inFile" value="File">
     <input type="submit" formmethod="post" name="toDB" value="DB">
+    <hr>
     <?php
-    if ($_GET['sizeOfArray']) {
+    if ($_GET['sizeOfArray'] && $_GET['kindOfSort']) {
         $action = 0;
         $sizeOfArray = $_GET['sizeOfArray'];
         $kindOfSort = $_GET['kindOfSort'];
