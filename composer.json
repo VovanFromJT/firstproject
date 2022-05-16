@@ -7,6 +7,7 @@
         "psr-4": {
             "Source\\": "src/",
             "Controller\\": "src/",
+            "DBConnector\\": "src/",
             "Interfaces\\": "src/",
             "Output\\": "src/",
             "Sorting\\": "src/",
