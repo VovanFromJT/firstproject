@@ -38,9 +38,9 @@ const JS_PATH = 'resources/js/';
         <input type="range" min="2" max="20" value="2" oninput="this.nextElementSibling.value = this.value" id="sizeOfArray" name="sizeOfArray" required>
     <output>2</output>
     </label>
-    <input type="submit" id="sort" value="Sort">
-    <input type="submit" formmethod="post" id="file" name="inFile" value="File">
-    <input type="submit" formmethod="post" id="db" name="toDB" value="DB">
+    <input type="submit" value="Sort">
+    <input type="submit" formmethod="post" name="inFile" value="File">
+    <input type="submit" formmethod="post" name="toDB" value="DB">
     <hr>
     <?php
     if ($_GET['sizeOfArray'] && $_GET['kindOfSort']) {
