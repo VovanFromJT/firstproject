@@ -6,12 +6,13 @@ use Source\Sorting\ParentAlgoritm;
 
 class Vertically extends ParentAlgoritm
 {
-    function __construct(
+    public function __construct(
+        string $name,
         int $sizeOfArray,
         int $action
     ) {
         parent::__construct(
-            self::VERTICAL_ALGORITM,
+            $name,
             $sizeOfArray,
             $action
         );

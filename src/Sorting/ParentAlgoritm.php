@@ -2,22 +2,15 @@
 
 namespace Source\Sorting;
 
-use Source\Output\OutputInJson;
-use Source\Output\OutputInTxt;
-use Source\Output\OutputOnScreen;
-use Source\Traits\Generator;
-use Source\Traits\Outputer;
-use Source\Traits\Runner;
+use Source\Helper\Generator;
+use Source\Interfaces\ISort;
+use Source\Output\WriterDB;
+use Source\Output\WriterDisplay;
+use Source\Output\WriterFile;
 
-abstract class ParentAlgoritm
+abstract class ParentAlgoritm implements ISort
 {
-    use Generator, Outputer, Runner;
-
-    private object $txt;
-    private object $screen;
-    private object $json;
-
-    private string $name;
+    protected string $name;
     protected int $sizeOfArray;
     protected int $action;
     protected int $count = 0;
@@ -25,13 +18,7 @@ abstract class ParentAlgoritm
     protected array $inputArray;
     protected array $outputArray;
 
-    protected const HORIZONTAL_ALGORITM = "Horizontal";
-    protected const VERTICAL_ALGORITM = "Vertical";
-    protected const SNAKE_ALGORITM = "Snake";
-    protected const DIAGONAL_ALGORITM = "Diagonal";
-    protected const SNAIL_ALGORITM = "Snail";
-
-    function __construct(
+    public function __construct(
         string $name,
         int $sizeOfArray,
         int $action
@@ -39,12 +26,47 @@ abstract class ParentAlgoritm
        $this->name = $name;
        $this->sizeOfArray = $sizeOfArray;
        $this->action = $action;
-
-       $this->txt = new OutputInTxt();
-       $this->screen = new OutputOnScreen();
-       $this->json = new OutputInJson();
     }
 
-    abstract protected function sortArray(): void;
+    public function generateArray(): void
+    {
+        $genArray = new Generator($this->sizeOfArray);
+        [
+            $this->diffArray,
+            $this->inputArray
+        ] = $genArray->generateArray();
+    }
 
+    public function callOutput(): void
+    {
+        switch ($this->action){
+            case 0:
+                $screen = new WriterDisplay(
+                    $this->outputArray,
+                    $this->sizeOfArray,
+                    $this->name,
+                    $this->inputArray
+                );
+                $screen->outputArray();
+                break;
+            case 1:
+                $txt = new WriterFile(
+                    $this->outputArray,
+                    $this->sizeOfArray,
+                    $this->name,
+                    $this->inputArray
+                );
+                $txt->outputArray();
+                break;
+            case 2:
+                $json = new WriterDB(
+                    $this->outputArray,
+                    $this->sizeOfArray,
+                    $this->name,
+                    $this->inputArray
+                );
+                $json->outputArray();
+                break;
+        }
+    }
 }

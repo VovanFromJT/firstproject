@@ -8,7 +8,7 @@ class DatabaseGateway
 {
     private object $configuration;
 
-    function __construct(DatabaseConfiguration $configuration)
+    public function __construct(DatabaseConfiguration $configuration)
     {
         $this->configuration = $configuration;
     }

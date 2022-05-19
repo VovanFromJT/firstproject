@@ -6,12 +6,13 @@ use Source\Sorting\ParentAlgoritm;
 
 class Snake extends ParentAlgoritm
 {
-    function __construct(
+    public function __construct(
+        string $name,
         int $sizeOfArray,
         int $action
     ) {
         parent::__construct(
-            self::SNAKE_ALGORITM,
+            $name,
             $sizeOfArray,
             $action
         );

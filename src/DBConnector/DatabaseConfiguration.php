@@ -6,17 +6,22 @@ class DatabaseConfiguration
 {
     private string $host;
     private int $port;
-    private string $username;
+    private string $userName;
     private string $password;
+    private string $dbName;
 
-    private const DB_NAME = "Arrays";
-
-    function __construct(string $host, int $port, string $username, string $password)
-    {
+    public function __construct(
+        string $host,
+        string $userName,
+        string $password,
+        string $dbName,
+        int $port
+    ) {
         $this->host = $host;
-        $this->port = $port;
-        $this->username = $username;
+        $this->userName = $userName;
         $this->password = $password;
+        $this->dbName = $dbName;
+        $this->port = $port;
     }
 
     public function getHost(): string
@@ -24,14 +29,9 @@ class DatabaseConfiguration
         return $this->host;
     }
 
-    public function getPort(): int
-    {
-        return $this->port;
-    }
-
     public function getUsername(): string
     {
-        return $this->username;
+        return $this->userName;
     }
 
     public function getPassword(): string
@@ -41,6 +41,11 @@ class DatabaseConfiguration
 
     public function getDBName(): string
     {
-        return self::DB_NAME;
+        return $this->dbName;
+    }
+
+    public function getPort(): int
+    {
+        return $this->port;
     }
 }

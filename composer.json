@@ -6,8 +6,9 @@
     "autoload": {
         "psr-4": {
             "Source\\": "src/",
-            "Controller\\": "src/",
+            "Factory\\\\": "src/",
             "DBConnector\\": "src/",
+            "Helper\\": "src/",
             "Interfaces\\": "src/",
             "Output\\": "src/",
             "Sorting\\": "src/",
@@ -23,7 +24,9 @@
     ],
   "require":
   {
+      "friendsofphp/php-cs-fixer": "v2.19.3",
       "ext-mysqli": "*",
-      "twbs/bootstrap": "5.1.3"
+      "twbs/bootstrap": "5.1.3",
+      "vlucas/phpdotenv": "^5.4"
   }
 }

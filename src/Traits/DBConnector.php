@@ -2,40 +2,30 @@
 
 namespace Source\Traits;
 
-use Source\DBConnector\DatabaseConfiguration;
-use Source\DBConnector\DatabaseGateway;
+use Source\DBConnector\DatabaseConnect;
 
 trait DBConnector
 {
-    public function callDBConnection(array $jsonArray): void
+    protected function setConnect(): void
+    {
+        $connect = new DatabaseConnect();
+        $this->connection = $connect->getConnect();
+    }
+
+    public function newDbRecord(array $jsonArray): void
     {
         $name = $jsonArray[0];
         $inputArray = json_encode($jsonArray[1]);
         $outputArray = json_encode($jsonArray[2]);
         $date = $jsonArray[3];
 
-        $config = new DatabaseConfiguration(
-            "localhost",
-            3306,
-            "phpmyadmin",
-            "koshak2002"
-        );
-
-        $gateway = new DatabaseGateway($config);
-        $connection = $gateway->getConfiguration();
-
-        if ($connection->connect_error) {
-            echo "<p>Connection failed: " . $connection->connect_error . "</p>";
-            return;
-        }
-
         $sql = "INSERT INTO Sorting (name, inputArray, outputArray, date) 
                 VALUES ('$name', '$inputArray', '$outputArray', '$date')";
 
-        if ($connection->query($sql) === true) {
-            echo "<script type='text/javascript'>alert('$name record in DB created successfully')</script>";
+        if ($this->connection->query($sql) === true) {
+            echo "<p>$name record in DB created successfully</p>";
         } else {
-            echo "<p>Error: " . $sql . "<br>" . $connection->error . "</p>";
+            echo "<p>Error: " . $sql . "<br>" . $this->connection->error . "</p>";
         }
     }
 }

@@ -1,10 +1,14 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
-use Source\Controller\CallMethods;
+use Dotenv\Dotenv;
+use Source\Factory\ArraySorterFactory;
 
 const CSS_PATH = 'resources/css/';
 const JS_PATH = 'resources/js/';
+
+$dotenv = Dotenv::createUnsafeImmutable(__DIR__);
+$dotenv->load();
 ?>
 
 <!DOCTYPE html>
@@ -24,12 +28,12 @@ const JS_PATH = 'resources/js/';
 
 <form id="formSubmit">
     <select name="kindOfSort" id="kindOfSort" required>
-        <option value="all">All Sort</option>
-        <option value="horizontal">Horizontal</option>
-        <option value="vertical">Vertical</option>
-        <option value="snake">Snake</option>
-        <option value="diagonal">Diagonal</option>
-        <option value="snail">Snail</option>
+        <option value="none">None</option>
+        <option value="Horizontal">Horizontal</option>
+        <option value="Vertical">Vertical</option>
+        <option value="Snake">Snake</option>
+        <option value="Diagonal">Diagonal</option>
+        <option value="Snail">Snail</option>
     </select>
     <label for="kindOfSort">
         Size of Array(n):
@@ -43,22 +47,26 @@ const JS_PATH = 'resources/js/';
     <input type="submit" formmethod="post" name="toDB" value="DB">
     <hr>
     <?php
-    if ($_GET['sizeOfArray'] && $_GET['kindOfSort']) {
+    if (
+            $_GET['kindOfSort']
+            && $_GET['sizeOfArray']
+    ) {
         $action = 0;
-        $sizeOfArray = $_GET['sizeOfArray'];
-        $kindOfSort = $_GET['kindOfSort'];
-        if ($_POST['inFile']){
+        if ($_POST['inFile']) {
             $action = 1;
         }
-        elseif ($_POST['toDB']){
+        elseif ($_POST['toDB']) {
             $action = 2;
         }
-        $call = new CallMethods(
-                $sizeOfArray,
-                $kindOfSort,
+        $factory = new ArraySorterFactory(
+                $_GET['sizeOfArray'],
+                $_GET['kindOfSort'],
                 $action
         );
-        $call->callRun();
+        $getArray = $factory->createKind();
+        $getArray?->generateArray();
+        $getArray?->sortArray();
+        $getArray?->callOutput();
     }
     ?>
 </form>
