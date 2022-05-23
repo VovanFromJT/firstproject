@@ -64,9 +64,11 @@ $dotenv->load();
                 $action
         );
         $getArray = $factory->createKind();
-        $getArray?->generateArray();
-        $getArray?->sortArray();
-        $getArray?->callOutput();
+        if (!empty($getArray)) {
+            $getArray->generateArray();
+            $getArray->sortArray();
+            $getArray->callOutput();
+        }
     }
     ?>
 </form>

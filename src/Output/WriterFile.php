@@ -34,7 +34,7 @@ class WriterFile extends Write
                 fwrite($file, "\n");
             }
             fclose($file);
-            echo "<p>files/txt/" . $this->name . ".txt was successfully created:)</p>";
+            echo "<a href='../../files/txt/$this->name.txt' download=''>$this->name.txt<a/>";
         }
         catch (Exception $e) {
             echo "Message: " . $e->getMessage();

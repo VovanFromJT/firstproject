@@ -48,6 +48,4 @@ class ArraySorterFactory extends ArrayConstruct
                 return null;
         }
     }
-
-
 }
