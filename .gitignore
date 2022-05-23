@@ -2,5 +2,6 @@
 /vendor/
 /.idea/
 /phpmyadmin/
-/composer.phar/
-/.env
+composer.phar
+.env
+.php_cs.cache
