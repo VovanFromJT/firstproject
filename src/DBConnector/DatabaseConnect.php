@@ -4,7 +4,7 @@ namespace Source\DBConnector;
 
 class DatabaseConnect
 {
-    public function getConnect(): object|null {
+    public function getConnect(): object {
 
         $config = new DatabaseConfiguration(
             getenv('DB_HOST'),
@@ -17,7 +17,7 @@ class DatabaseConnect
         $gateway = new DatabaseGateway($config);
         if ($gateway->getConfiguration()->connect_error) {
             echo "<p>Connection failed: " . $gateway->getConfiguration()->connect_error . "</p>";
-            return null;
+            die();
         }
         return $gateway->getConfiguration();
     }

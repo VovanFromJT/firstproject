@@ -3,6 +3,7 @@
 namespace Source\Output;
 
 use Exception;
+use Source\Helper\Response;
 
 class WriterFile extends Write
 {
@@ -34,10 +35,18 @@ class WriterFile extends Write
                 fwrite($file, "\n");
             }
             fclose($file);
-            echo "<a href='../../files/txt/$this->name.txt' download=''>$this->name.txt<a/>";
+            $response = new Response(200, 'OK');
+            $response->setResponse(
+                [
+                    'name' => $this->name,
+                    'outputArray' => $this->outputArray,
+                ]
+            );
+            echo json_encode($response->getResponse());
         }
         catch (Exception $e) {
-            echo "Message: " . $e->getMessage();
+            $response = new Response($e->getCode(), $e->getMessage());
+            echo json_encode($response->getResponse());
         }
     }
 }

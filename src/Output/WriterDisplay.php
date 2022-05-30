@@ -2,6 +2,9 @@
 
 namespace Source\Output;
 
+use Exception;
+use Source\Helper\Response;
+
 class WriterDisplay extends Write
 {
     public function __construct(
@@ -20,16 +23,22 @@ class WriterDisplay extends Write
 
     public function outputArray(): void
     {
-        echo "<p><br>$this->name:<br></p>";
-        echo "<p><table>";
-        for ($firstIndex = 0; $firstIndex < $this->sizeOfArray; $firstIndex++) {
-            echo "<tr>";
-            for ($secondIndex = 0; $secondIndex < $this->sizeOfArray; $secondIndex++) {
-                echo "<td>" . $this->outputArray[$firstIndex][$secondIndex] . "</td>";
-            }
-            echo "</tr>";
+        try {
+            $jsonArray = [
+                "name" => $this->name,
+                "outputArray" => $this->outputArray,
+            ];
+            $response = new Response(200, 'OK');
+            $response->setResponse($jsonArray);
+            echo json_encode($response->getResponse());
+        } catch (Exception $e) {
+            $response = new Response(
+                $e->getCode(),
+                $e->getMessage()
+            );
+            $response->setResponse($jsonArray);
+            echo json_encode($response->getResponse());
         }
-        echo "</table></p>";
     }
 }
 

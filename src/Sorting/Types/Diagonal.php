@@ -6,20 +6,13 @@ use Source\Sorting\ParentAlgoritm;
 
 class Diagonal extends ParentAlgoritm
 {
-    public function __construct(
-        string $name,
-        int $sizeOfArray,
-        int $action
-    ) {
-        parent::__construct(
-            $name,
-            $sizeOfArray,
-            $action
-        );
+    public function __construct(string $name) {
+        parent::__construct($name);
     }
 
-    public function sortArray(): void
+    public function sortArray(int $sizeOfArray, array $diffArray): void
     {
+        $this->sizeOfArray = $sizeOfArray;
         $flag = "right-up";
         $firstMin = $secondMin = $firstPosition = $secondPosition = 0;
 
@@ -28,7 +21,7 @@ class Diagonal extends ParentAlgoritm
                 case "right-up":
                     $firstIndex = $firstMin;
                     $secondIndex = $secondMin;
-                    $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$this->count];
+                    $this->outputArray[$firstIndex][$secondIndex] = $diffArray[$this->count];
                     $this->count++;
                     if (
                         $firstIndex == 0

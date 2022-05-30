@@ -6,20 +6,13 @@ use Source\Sorting\ParentAlgoritm;
 
 class Snake extends ParentAlgoritm
 {
-    public function __construct(
-        string $name,
-        int $sizeOfArray,
-        int $action
-    ) {
-        parent::__construct(
-            $name,
-            $sizeOfArray,
-            $action
-        );
+    public function __construct(string $name) {
+        parent::__construct($name);
     }
 
-    public function sortArray(): void
+    public function sortArray(int $sizeOfArray, array $diffArray): void
     {
+        $this->sizeOfArray = $sizeOfArray;
         $flag = "right";
         $firstMin = 0;
 
@@ -28,7 +21,7 @@ class Snake extends ParentAlgoritm
                 case "right":
                     $firstIndex = $firstMin;
                     for ($secondIndex = 0; $secondIndex < $this->sizeOfArray; $secondIndex++) {
-                        $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$this->count];
+                        $this->outputArray[$firstIndex][$secondIndex] = $diffArray[$this->count];
                         $this->count++;
                     }
                     $firstMin++;
@@ -37,7 +30,7 @@ class Snake extends ParentAlgoritm
                 case "left":
                     $firstIndex = $firstMin;
                     for ($secondIndex = $this->sizeOfArray - 1; $secondIndex >= 0; $secondIndex--) {
-                        $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$this->count];
+                        $this->outputArray[$firstIndex][$secondIndex] = $diffArray[$this->count];
                         $this->count++;
                     }
                     $firstMin++;

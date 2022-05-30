@@ -10,7 +10,6 @@ abstract class Write implements IWrite
     protected int $sizeOfArray;
     protected string $name;
     protected array $inputArray;
-    protected object $connection;
 
     public function __construct(
         array $outputArray,

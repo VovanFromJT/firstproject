@@ -2,7 +2,7 @@
 
 namespace Source\Output;
 
-use Source\Traits\DBConnector;
+use Source\DBConnector\DBConnector;
 
 class WriterDB extends Write
 {
@@ -24,12 +24,13 @@ class WriterDB extends Write
 
     public function outputArray(): void
     {
-        $jsonArray = [
+        $jsonArray =  [
             $this->name,
             $this->inputArray,
             $this->outputArray,
             date("H:i:s"),
         ];
+
         if (empty($this->connection)) {
             $this->setConnect();
         }

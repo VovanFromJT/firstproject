@@ -4,9 +4,7 @@ namespace Source\Interfaces;
 
 interface ISort
 {
-    public function generateArray(): void;
+    public function sortArray(int $sizeOfArray, array $diffArray): void;
 
-    public function sortArray(): void;
-
-    public function callOutput(): void;
+    public function callOutput(array $inputArray, string $action): void;
 }

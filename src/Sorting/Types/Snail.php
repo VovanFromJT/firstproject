@@ -6,20 +6,13 @@ use Source\Sorting\ParentAlgoritm;
 
 class Snail extends ParentAlgoritm
 {
-    public function __construct(
-        string $name,
-        int $sizeOfArray,
-        int $action
-    ) {
-        parent::__construct(
-            $name,
-            $sizeOfArray,
-            $action
-        );
+    public function __construct(string $name) {
+        parent::__construct($name);
     }
 
-    public function sortArray(): void
+    public function sortArray(int $sizeOfArray, array $diffArray): void
     {
+        $this->sizeOfArray = $sizeOfArray;
         $flag = "right";
         $firstMin = $secondMin = 0;
         $firstMax = $secondMax = $this->sizeOfArray - 1;
@@ -30,7 +23,7 @@ class Snail extends ParentAlgoritm
                     $firstIndex = $firstMin;
                     for ($secondIndex = $secondMin; $secondIndex <= $secondMax; $secondIndex++) {
                         if (empty($this->outputArray[$firstIndex][$secondIndex])) {
-                            $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$this->count];
+                            $this->outputArray[$firstIndex][$secondIndex] = $diffArray[$this->count];
                             $this->count++;
                         }
                     }
@@ -41,7 +34,7 @@ class Snail extends ParentAlgoritm
                     $secondIndex = $secondMax;
                     for ($firstIndex = $firstMin; $firstIndex <= $firstMax; $firstIndex++) {
                         if (empty($this->outputArray[$firstIndex][$secondIndex])) {
-                            $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$this->count];
+                            $this->outputArray[$firstIndex][$secondIndex] = $diffArray[$this->count];
                             $this->count++;
                         }
                     }
@@ -52,7 +45,7 @@ class Snail extends ParentAlgoritm
                     $firstIndex = $firstMax;
                     for ($secondIndex = $secondMax; $secondIndex >= $secondMin; $secondIndex--) {
                         if (empty($this->outputArray[$firstIndex][$secondIndex])) {
-                            $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$this->count];
+                            $this->outputArray[$firstIndex][$secondIndex] = $diffArray[$this->count];
                             $this->count++;
                         }
                     }
@@ -63,7 +56,7 @@ class Snail extends ParentAlgoritm
                     $secondIndex = $secondMin;
                     for ($firstIndex = $firstMax; $firstIndex >= $firstMin; $firstIndex--) {
                         if (empty($this->outputArray[$firstIndex][$secondIndex])) {
-                            $this->outputArray[$firstIndex][$secondIndex] = $this->diffArray[$this->count];
+                            $this->outputArray[$firstIndex][$secondIndex] = $diffArray[$this->count];
                             $this->count++;
                         }
                     }
