@@ -1,0 +1,38 @@
+p {
+    font-size: 7mm;
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+button[type=submit] {
+    margin-left: 15px;
+}
+
+input[type=number] {
+    background: #363636;
+    color: white;
+}
+
+select {
+    background: #363636;
+    color: white;
+    height: 25px;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-flow: column;
+}
+
+main {
+    height: 100%;
+}
