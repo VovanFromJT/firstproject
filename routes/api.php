@@ -17,7 +17,3 @@ use Illuminate\Support\Facades\Storage;
 */
 
 Route::match(['get', 'post'], '/sort', [SortingController::class, 'render']);
-
-Route::get('/download', function (Request $request) {
-    return Storage::download('public/' . $request->kindSort . '.txt');
-});

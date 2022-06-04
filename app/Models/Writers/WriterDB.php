@@ -2,6 +2,8 @@
 
 namespace App\Models\Writers;
 
+use App\Exceptions\CustomException;
+use App\Exceptions\CustomExceptionCase;
 use App\Models\ArrayDB;
 use Exception;
 
@@ -27,7 +29,7 @@ class WriterDB extends Writer
                 200
             )->sendContent();
         } else {
-            throw new Exception('Record not saved! Trouble: connect to DB:(');
+            throw new CustomException(CustomExceptionCase::InvalidDBRecord);
         }
     }
 }

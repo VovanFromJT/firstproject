@@ -57,10 +57,13 @@ class SortingForm extends React.Component {
         event.preventDefault();
 
         axios({
-            url: this.state.url + `/download`,
+            url: this.state.url + `/sort`,
             method: event.target.formMethod,
+            credentials: true,
             params: {
-                kindSort: this.state.kindSort
+                sizeArray: this.state.sizeArray,
+                kindSort: this.state.kindSort,
+                action: event.target.value
             },
             responseType: 'blob'
         })
@@ -93,10 +96,9 @@ class SortingForm extends React.Component {
                       <option value="Diagonal">Diagonal</option>
                       <option value="Snail">Snail</option>
                   </select>
-                  <button className="btn btn-primary"   onClick={this.handleWrite}    formMethod="get"  type="submit" name="action" value="sort">Sort</button>
-                  <button className="btn btn-secondary" onClick={this.handleWrite}    formMethod="get"  type="submit" name="action" value="file">File</button>
-                  <button className="btn btn-secondary" onClick={this.handleWrite}    formMethod="post" type="submit" name="action" value="db">DB record</button>
-                  <button className="btn btn-secondary" onClick={this.handleDownload} formMethod="get"  type="submit" name="download">Download</button>
+                  <button className="btn btn-primary"   onClick={this.handleWrite}    formMethod="get"  type="submit" name="action"   value="sort">Sort</button>
+                  <button className="btn btn-secondary" onClick={this.handleDownload}    formMethod="get"  type="submit" name="action"   value="file">File</button>
+                  <button className="btn btn-secondary" onClick={this.handleWrite}    formMethod="post" type="submit" name="action"   value="db">DB record</button>
                 </div>
                 <hr/>
                 <p>{this.state.name}</p>

@@ -6,4 +6,5 @@ enum CustomExceptionCase
 {
     case InvalidKindSort;
     case InvalidAction;
+    case InvalidDBRecord;
 }

@@ -12,25 +12,17 @@ class WriterFile extends Writer
      */
     public function writeArray(array $outputArray, int $sizeOfArray, array $inputArray, string $name)
     {
-        Storage::disk('public')->put($name . '.txt', '');
+        $txtFile = $name . '.txt';
+        if (Storage::disk('public')->exists($txtFile) === true) {
+            Storage::delete('public/'. $txtFile);
+        }
         for ($firstIndex = 0; $firstIndex < $sizeOfArray; $firstIndex++) {
             $data = '';
             for ($secondIndex = 0; $secondIndex < $sizeOfArray; $secondIndex++) {
                 $data .= $outputArray[$firstIndex][$secondIndex] . "\t";
             }
-            Storage::disk('public')->append($name . '.txt', $data);
+            Storage::disk('public')->append($txtFile, $data);
         }
-        if (Storage::disk('public')->exists($name . '.txt')) {
-            response(
-                [
-                    "name" => "",
-                    "outputArray" => [],
-                    'message' => $name . '.txt was created successfully:)',
-                ],
-                200
-            )->sendContent();
-        } else {
-            throw new Exception('Record not saved! Trouble: write in file:(');
-        }
+        response(Storage::download('public/' . $txtFile)->sendContent());
     }
 }
