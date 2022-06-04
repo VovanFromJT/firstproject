@@ -2,8 +2,8 @@
 
 namespace App\Models\Writers;
 
+use App\Models\ArrayDB;
 use Exception;
-use Illuminate\Support\Facades\DB;
 
 class WriterDB extends Writer
 {
@@ -12,17 +12,17 @@ class WriterDB extends Writer
      */
     public function writeArray(array $outputArray, int $sizeOfArray, array $inputArray, string $name)
     {
-        if (DB::table('Sortings')->insert([
-            'name' => $name,
-            'inputArray' => json_encode($inputArray),
-            'outputArray' => json_encode($outputArray),
-            'date' => date("y:m:d"),
-        ]) === true) {
+        if (ArrayDB::create([
+                "name" => $name,
+                "inputArray" => json_encode($inputArray),
+                "outputArray" => json_encode($outputArray),
+                "date" => date("y:m:d"),
+            ])) {
             response(
                 [
-                    "name" => $name,
-                    "outputArray" => $outputArray,
-                    'message' => 'Record successfully saved in DB:)'
+                    "name" => "",
+                    "outputArray" => [],
+                    'message' => 'Record successfully saved in DB:)',
                 ],
                 200
             )->sendContent();

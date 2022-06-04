@@ -10,7 +10,7 @@ class WriterDisplay extends Writer
             [
                 "name" => $name,
                 "outputArray" => $outputArray,
-                "message" => 'Well done:)'
+                "message" => 'Well done:)',
             ],
             200
         )->sendContent();

@@ -20,7 +20,7 @@ class SortingController extends Controller
             $request->validate([
                 'sizeArray' => 'required|integer|min:2|max:20',
                 'kindSort' => 'required',
-                'action' => 'required'
+                'action' => 'required',
             ]);
 
             $generateArray = new GenerateArray($request->sizeArray);
@@ -39,7 +39,7 @@ class SortingController extends Controller
                 [
                     "name" => "",
                     "outputArray" => [],
-                    "message" => $exception->getMessage()
+                    "message" => $exception->getMessage(),
                 ],
                 500
             )->sendContent();

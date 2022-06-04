@@ -23,9 +23,9 @@ class WriterFile extends Writer
         if (Storage::disk('public')->exists($name . '.txt')) {
             response(
                 [
-                    "name" => $name,
-                    "outputArray" => $outputArray,
-                    'message' => $name . '.txt successfully was created:)'
+                    "name" => "",
+                    "outputArray" => [],
+                    'message' => $name . '.txt was created successfully:)',
                 ],
                 200
             )->sendContent();

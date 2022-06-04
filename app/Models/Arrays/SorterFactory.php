@@ -2,19 +2,13 @@
 
 namespace App\Models\Arrays;
 
-use App\Models\ICreateProduct;
+use App\Exceptions\CustomException;
+use App\Exceptions\CustomExceptionCase;
+use App\Models\AbstractFactory;
 use Exception;
 
-class SorterFactory implements ICreateProduct
+class SorterFactory extends AbstractFactory
 {
-    private const HORIZONTAL_ALGORITM = "Horizontal";
-    private const VERTICAL_ALGORITM = "Vertical";
-    private const SNAKE_ALGORITM = "Snake";
-    private const DIAGONAL_ALGORITM = "Diagonal";
-    private const SNAIL_ALGORITM = "Snail";
-
-    private string $kindOfSort;
-
     public function __construct(string $kindOfSort)
     {
         $this->kindOfSort = $kindOfSort;
@@ -26,12 +20,12 @@ class SorterFactory implements ICreateProduct
     public function createProduct(): Sorter
     {
         return match ($this->kindOfSort) {
-            self::HORIZONTAL_ALGORITM => new Horizontal($this->kindOfSort),
-            self::VERTICAL_ALGORITM => new Vertical($this->kindOfSort),
-            self::SNAKE_ALGORITM => new Snake($this->kindOfSort),
-            self::DIAGONAL_ALGORITM => new Diagonal($this->kindOfSort),
-            self::SNAIL_ALGORITM => new Snail($this->kindOfSort),
-            default => throw new Exception('Invalid kind of sort:(')
+            KindCase::Horizontal->name => new Horizontal($this->kindOfSort),
+            KindCase::Vertical->name => new Vertical($this->kindOfSort),
+            KindCase::Snake->name => new Snake($this->kindOfSort),
+            KindCase::Diagonal->name => new Diagonal($this->kindOfSort),
+            KindCase::Snail->name => new Snail($this->kindOfSort),
+            default => throw new CustomException(CustomExceptionCase::InvalidKindSort)
         };
     }
 }

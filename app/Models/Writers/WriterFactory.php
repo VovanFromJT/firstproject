@@ -2,17 +2,13 @@
 
 namespace App\Models\Writers;
 
-use App\Models\ICreateProduct;
+use App\Exceptions\CustomException;
+use App\Exceptions\CustomExceptionCase;
+use App\Models\AbstractFactory;
 use Exception;
 
-class WriterFactory implements ICreateProduct
+class WriterFactory extends AbstractFactory
 {
-    private const SORT = "sort";
-    private const FILE = "file";
-    private const DB = "db";
-
-    private string $action;
-
     public function __construct(string $action)
     {
         $this->action = $action;
@@ -24,10 +20,10 @@ class WriterFactory implements ICreateProduct
     public function createProduct(): Writer
     {
         return match ($this->action) {
-            self::SORT => new WriterDisplay(),
-            self::FILE => new WriterFile(),
-            self::DB => new WriterDB(),
-            default => throw new Exception('Invalid action:(')
+            ActionCase::sort->name => new WriterDisplay(),
+            ActionCase::file->name => new WriterFile(),
+            ActionCase::db->name => new WriterDB(),
+            default => throw new CustomException(CustomExceptionCase::InvalidAction)
         };
     }
 }
