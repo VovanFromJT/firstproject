@@ -14,7 +14,7 @@ class WriterFile extends Writer
     {
         $txtFile = $name . '.txt';
         if (Storage::disk('public')->exists($txtFile) === true) {
-            Storage::delete('public/'. $txtFile);
+            Storage::delete('public/' . $txtFile);
         }
         for ($firstIndex = 0; $firstIndex < $sizeOfArray; $firstIndex++) {
             $data = '';

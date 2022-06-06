@@ -1,7 +1,6 @@
 import './App.css';
 import React from "react";
 import axios from 'axios';
-import {useCsrfToken} from '@shopify/react-csrf'
 
 class SortingForm extends React.Component {
     constructor(props) {
@@ -97,7 +96,7 @@ class SortingForm extends React.Component {
                       <option value="Snail">Snail</option>
                   </select>
                   <button className="btn btn-primary"   onClick={this.handleWrite}    formMethod="get"  type="submit" name="action"   value="sort">Sort</button>
-                  <button className="btn btn-secondary" onClick={this.handleDownload}    formMethod="get"  type="submit" name="action"   value="file">File</button>
+                  <button className="btn btn-secondary" onClick={this.handleDownload} formMethod="get"  type="submit" name="action"   value="file">File</button>
                   <button className="btn btn-secondary" onClick={this.handleWrite}    formMethod="post" type="submit" name="action"   value="db">DB record</button>
                 </div>
                 <hr/>

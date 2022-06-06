@@ -4,7 +4,7 @@ namespace App\Models\Arrays;
 
 use App\Models\Writers\Writer;
 
-abstract class Sorter implements ISort, IOutput
+abstract class Sorter implements ISort, IGetOutputArray
 {
     protected string $name;
     protected int $sizeOfArray;
@@ -18,15 +18,18 @@ abstract class Sorter implements ISort, IOutput
 
     abstract public function sortArray(int $sizeOfArray, array $diffArray): void;
 
-    public function callOutput(Writer $write, array $inputArray): void
+    public function getOutputArray(array $inputArray): array
     {
-        $write->writeArray($this->outputArray, $this->sizeOfArray, $inputArray, $this->name);
+        return $this->outputArray;
     }
 
     protected function sortArrayKeys()
     {
         for ($index = 0; $index < $this->sizeOfArray; $index++) {
-            ksort($this->outputArray[$index], SORT_REGULAR);
+            ksort(
+                $this->outputArray[$index],
+                SORT_REGULAR
+            );
         }
     }
 }

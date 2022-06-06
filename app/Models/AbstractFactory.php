@@ -2,16 +2,20 @@
 
 namespace App\Models;
 
-use App\Models\Arrays\Sorter;
-use App\Models\Writers\Writer;
-
 abstract class AbstractFactory implements ICreateProduct
 {
-    protected string $kindOfSort;
-    protected string $action;
+    /**
+     * @var string
+     */
+    protected $kindOfSort;
 
     /**
-     * @return Sorter|Writer
+     * @var string
+     */
+    protected $action;
+
+    /**
+     * @return mixed
      */
     abstract public function createProduct();
 }

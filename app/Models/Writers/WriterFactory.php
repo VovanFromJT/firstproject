@@ -20,9 +20,9 @@ class WriterFactory extends AbstractFactory
     public function createProduct(): Writer
     {
         return match ($this->action) {
-            ActionCase::sort->name => new WriterDisplay(),
-            ActionCase::file->name => new WriterFile(),
-            ActionCase::db->name => new WriterDB(),
+            WriterFactoryCase::sort->name => new WriterDisplay(),
+            WriterFactoryCase::file->name => new WriterFile(),
+            WriterFactoryCase::db->name   => new WriterDB(),
             default => throw new CustomException(CustomExceptionCase::InvalidAction)
         };
     }

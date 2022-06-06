@@ -21,11 +21,7 @@ class WriterDB extends Writer
                 "date" => date("y:m:d"),
             ])) {
             response(
-                [
-                    "name" => "",
-                    "outputArray" => [],
-                    'message' => 'Record successfully saved in DB:)',
-                ],
+                ['message' => 'Record successfully saved in DB:)'],
                 200
             )->sendContent();
         } else {

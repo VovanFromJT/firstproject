@@ -20,11 +20,11 @@ class SorterFactory extends AbstractFactory
     public function createProduct(): Sorter
     {
         return match ($this->kindOfSort) {
-            KindCase::Horizontal->name => new Horizontal($this->kindOfSort),
-            KindCase::Vertical->name => new Vertical($this->kindOfSort),
-            KindCase::Snake->name => new Snake($this->kindOfSort),
-            KindCase::Diagonal->name => new Diagonal($this->kindOfSort),
-            KindCase::Snail->name => new Snail($this->kindOfSort),
+            SorterFactoryCase::Horizontal->name => new Horizontal($this->kindOfSort),
+            SorterFactoryCase::Vertical->name   => new Vertical($this->kindOfSort),
+            SorterFactoryCase::Snake->name      => new Snake($this->kindOfSort),
+            SorterFactoryCase::Diagonal->name   => new Diagonal($this->kindOfSort),
+            SorterFactoryCase::Snail->name      => new Snail($this->kindOfSort),
             default => throw new CustomException(CustomExceptionCase::InvalidKindSort)
         };
     }

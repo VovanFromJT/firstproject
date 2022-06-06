@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\SortingController;
+use App\Http\Controllers\MainController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
-Route::match(['get', 'post'], '/sort', [SortingController::class, 'render']);
+Route::match(['get', 'post'], '/sort', [MainController::class, 'render']);
