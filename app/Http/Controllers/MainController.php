@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\GenerateArray;
-use App\Models\Arrays\SorterFactory;
-use App\Models\Writers\WriterFactory;
+use App\Services\Arrays\SorterFactory;
+use App\Services\Writers\WriterFactory;
+use App\Services\Writers\WriterFile;
 use Exception;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class MainController extends Controller
 {
@@ -22,30 +24,34 @@ class MainController extends Controller
                 'kindSort' => 'required',
                 'action' => 'required',
             ]);
+            [$diffArray, $inputArray] = (new GenerateArray($request->sizeArray))->generateArray();
 
-            $generateArray = new GenerateArray($request->sizeArray);
-            [$diffArray, $inputArray] = $generateArray->generateArray();
-
-            $sorterFactory = new SorterFactory($request->kindSort);
-            $sorter = $sorterFactory->createProduct();
+            $sorter = (new SorterFactory($request->kindSort))->createProduct();
             $sorter->sortArray(
                 $request->sizeArray,
                 $diffArray
             );
-            $outputArray = $sorter->getOutputArray($inputArray);
 
-            $writeFactory = new WriterFactory($request->action);
-            $writer = $writeFactory->createProduct();
-            $writer->writeArray(
+            $outputArray = $sorter->getOutputArray();
+
+            $writer = (new WriterFactory($request->action))->createProduct();
+            $response = $writer->writeArray(
                 $outputArray,
                 $request->sizeArray,
                 $inputArray,
                 $request->kindSort
             );
+
+            ($writer instanceOf WriterFile)
+                ? response(Storage::download($response)->sendContent())
+                : response($response)->sendContent();
+
         } catch (Exception $exception) {
             response(
-                ["message" => $exception->getMessage()],
-                500
+                [
+                    "message" => $exception->getMessage(),
+                    "status" => $exception->getCode()?:400,
+                ]
             )->sendContent();
         }
     }

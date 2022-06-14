@@ -4,12 +4,7 @@ namespace App\Helpers;
 
 class GenerateArray
 {
-    private int $sizeOfArray;
-
-    public function __construct(int $sizeOfArray)
-    {
-        $this->sizeOfArray = $sizeOfArray;
-    }
+    public function __construct(private readonly int $sizeOfArray) {}
 
     public function generateArray(): array
     {

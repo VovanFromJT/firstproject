@@ -1,9 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +13,8 @@ use Illuminate\Support\Facades\Storage;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::match(['get', 'post'], '/sort', [MainController::class, 'render']);
+Route::controller(MainController::class)->group(function () {
+    Route::get('/sort', 'render');
+    Route::get('/file', 'render');
+    Route::post('/dbrecord', 'render');
+});
