@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Helpers\GenerateArray;
 use App\Services\Arrays\SorterFactory;
 use App\Services\Writers\WriterFactory;
-use App\Services\Writers\WriterFile;
 use Exception;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
@@ -42,7 +41,7 @@ class MainController extends Controller
                 $request->kindSort
             );
 
-            ($writer instanceOf WriterFile)
+            (is_string($response))
                 ? response(Storage::download($response)->sendContent())
                 : response($response)->sendContent();
 

@@ -14,7 +14,7 @@ class WriterDB extends Writer
      */
     public function writeArray(array $outputArray, int $sizeOfArray, array $inputArray, string $name): array
     {
-        if (ArrayDB::factory()->create([
+        if (ArrayDB::create([
                 "name" => $name,
                 "inputArray" => json_encode($inputArray),
                 "outputArray" => json_encode($outputArray),
